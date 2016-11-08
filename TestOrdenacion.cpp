@@ -372,8 +372,8 @@ void TestOrdenacion::generar_grafica(string fichero1, string fichero2){
 	graf << "plot \"" << fichero1 << "\" using 1:2 with lines, \"" << fichero2 << "\" using 1:2 with lines" << endl;
 
 
-	graf << "set terminal pdf" << endl;
-    graf << "set output \"" << fichero1 << "-" <<fichero2 << ".pdf.\"" << endl;
+	graf << "set terminal png" << endl;
+    graf << "set output \"" << fichero1 << "-" <<fichero2 << ".png\"" << endl;
     graf << "replot" << endl;
     graf << "pause 10 \"Pulse Enter para continuar...\"" << endl;
 	graf.close();
