@@ -231,12 +231,13 @@ void TestOrdenacion::comparar(int metodo1, int metodo2) {
 	for(int i=tallaIni; i<tallaFin; i+=incTalla){
 		ConjuntoInt v(i);
 		int *vector=v.get_datos();
+		int *copia = v.get_datos();
 		segundos1=0;
 		int contador=0;
 		while(contador < NUMREPETICIONES){
             v.GeneraVector();
 			segundos1+=ordenarArrayDeInt(vector, i, metodo1);
-			segundos2+=ordenarArrayDeInt(vector, i, metodo2);
+			segundos2+=ordenarArrayDeInt(copia, i, metodo2);
 			contador++;
 		}
 		tiempo1=segundos1/NUMREPETICIONES;
