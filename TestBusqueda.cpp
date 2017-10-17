@@ -18,87 +18,101 @@ TestBusqueda::~TestBusqueda(void)
 {
 }
 
+#if defined _WIN32 || defined _WIN64
+
 double TestBusqueda::Buscar(int v[], int size, int metodo, int key){
 	AlgoritmosBusqueda test;
 	double segundos = 0;
     AlgoritmosOrdenacion ordenar;
     HashSearch testhash;
 
-    #if defined _WIN32 || defined _WIN64
-        Mtime counter;
-        LARGE_INTEGER t_ini, t_fin;
+    Mtime counter;
+    LARGE_INTEGER t_ini, t_fin;
 
-        switch(metodo){
-            case BINARIA:
-                ordenar.OrdenaHeapSort(v, size);
-                QueryPerformanceCounter(&t_ini);
-                test.busquedaBinaria(v, size, key);
-                QueryPerformanceCounter(&t_fin);
-            break;
+    switch(metodo){
+        case BINARIA:
+            ordenar.OrdenaHeapSort(v, size);
+            QueryPerformanceCounter(&t_ini);
+            test.busquedaBinaria(v, size, key);
+            QueryPerformanceCounter(&t_fin);
+        break;
 
-            case SECUENCIAL:
-                QueryPerformanceCounter(&t_ini);
-                test.busquedaSecuencial(v, size, key);
-                QueryPerformanceCounter(&t_fin);
-            break;
+        case SECUENCIAL:
+            QueryPerformanceCounter(&t_ini);
+            test.busquedaSecuencial(v, size, key);
+            QueryPerformanceCounter(&t_fin);
+        break;
 
-            case HASHCLOSED:
-                testhash.add_element_closed(v, size);
-                QueryPerformanceCounter(&t_ini);
-                testhash.search_element_closed(key);
-                QueryPerformanceCounter(&t_fin);
-            break;
+        case HASHCLOSED:
+            testhash.add_element_closed(v, size);
+            QueryPerformanceCounter(&t_ini);
+            testhash.search_element_closed(key);
+            QueryPerformanceCounter(&t_fin);
+        break;
 
-            case HASHOPENED:
-                testhash.add_element_opened(v, size);
-                QueryPerformanceCounter(&t_ini);
-                testhash.search_element_opened(key);
-                QueryPerformanceCounter(&t_fin);
-            break;
+        case HASHOPENED:
+            testhash.add_element_opened(v, size);
+            QueryPerformanceCounter(&t_ini);
+            testhash.search_element_opened(key);
+            QueryPerformanceCounter(&t_fin);
+        break;
 
-        }
-        segundos=counter.performancecounter_diff(&t_fin, &t_ini)*1000000;
-
-    #elif defined __linux__ || defined __unix__
-        duration<double> interval;
-        high_resolution_clock::time_point t_ini, t_fin;
-
-        switch(metodo){
-            case BINARIA:
-                ordenar.OrdenaHeapSort(v, size);
-                t_ini = high_resolution_clock::now();
-                test.busquedaBinaria(v, size, key);
-                t_fin = high_resolution_clock::now();
-            break;
-
-            case SECUENCIAL:
-                t_ini = high_resolution_clock::now();
-                test.busquedaSecuencial(v, size, key);
-                t_fin = high_resolution_clock::now();
-            break;
-
-            case HASHCLOSED:
-                testhash.add_element_closed(v, size);
-                t_ini = high_resolution_clock::now();
-                testhash.search_element_closed(key);
-                t_fin = high_resolution_clock::now();
-            break;
-
-            case HASHOPENED:
-                testhash.add_element_opened(v, size);
-                t_ini = high_resolution_clock::now();
-                testhash.search_element_opened(key);
-                t_fin = high_resolution_clock::now();
-            break;
-        }
-
-        interval = duration_cast<duration<double>>(t_fin - t_ini)*1000;
-        segundos = interval.count()*1000000;
-
-    #endif
+    }
+    segundos=counter.performancecounter_diff(&t_fin, &t_ini)*1000000;
 
 	return segundos;
 }
+
+#elif defined __linux__ || defined __unix__
+
+
+double TestBusqueda::Buscar(int v[], int size, int metodo, int key){
+	AlgoritmosBusqueda test;
+	double segundos = 0;
+    AlgoritmosOrdenacion ordenar;
+    HashSearch testhash;
+
+    duration<double> interval;
+    high_resolution_clock::time_point t_ini, t_fin;
+
+    switch(metodo){
+        case BINARIA:
+            ordenar.OrdenaHeapSort(v, size);
+            t_ini = high_resolution_clock::now();
+            test.busquedaBinaria(v, size, key);
+            t_fin = high_resolution_clock::now();
+        break;
+
+        case SECUENCIAL:
+            t_ini = high_resolution_clock::now();
+            test.busquedaSecuencial(v, size, key);
+            t_fin = high_resolution_clock::now();
+        break;
+
+        case HASHCLOSED:
+            testhash.add_element_closed(v, size);
+            t_ini = high_resolution_clock::now();
+            testhash.search_element_closed(key);
+            t_fin = high_resolution_clock::now();
+        break;
+
+        case HASHOPENED:
+            testhash.add_element_opened(v, size);
+            t_ini = high_resolution_clock::now();
+            testhash.search_element_opened(key);
+            t_fin = high_resolution_clock::now();
+        break;
+    }
+
+    interval = duration_cast<duration<double>>(t_fin - t_ini)*1000;
+    segundos = interval.count()*1000000;
+
+
+
+	return segundos;
+}
+
+#endif
 
 void TestBusqueda::comprobarMetodosBusqueda(){
     int talla, pos;
