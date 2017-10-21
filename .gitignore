@@ -1,0 +1,6 @@
+# Directories from object and binary files
+bin/
+obj/
+
+# LibreOffice locks
+.~lock.*#
