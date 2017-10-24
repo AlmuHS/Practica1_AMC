@@ -14,6 +14,9 @@ static const int BINARIA = 0;
 static const int SECUENCIAL = 1;
 static const int HASHCLOSED = 2;
 static const int HASHOPENED = 3;
+//static const int MEDIO = 0;
+//static const int MEJOR = 1;
+//static const int PEOR = 2;
 
 class TestBusqueda
 {
@@ -23,6 +26,7 @@ public:
 	~TestBusqueda(void);
 	void comprobarMetodosBusqueda();
 	void comparar(int metodo1, int metodo2);
+	void evaluar(string caso, int metodo);
 	void casoMedio(int metodo);
 	void casoMejor(int metodo);
 	void casoPeor(int metodo);
