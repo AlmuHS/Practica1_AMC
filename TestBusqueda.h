@@ -1,6 +1,5 @@
 #include <vector>
 #include "AlgoritmosBusqueda.h"
-#include "ConjuntoInt.h"
 #include "Mtime.h"
 #include "AlgoritmosOrdenacion.h"
 #include "HashSearch.h"
@@ -26,10 +25,7 @@ public:
 	~TestBusqueda(void);
 	void comprobarMetodosBusqueda();
 	void comparar(int metodo1, int metodo2);
-	void evaluar(string caso, int metodo);
 	void casoMedio(int metodo);
-	void casoMejor(int metodo);
-	void casoPeor(int metodo);
 	double Buscar(std::vector<int> v, int metodo, int key);
 	void generar_grafica(string metodo);
 	void generar_grafica(string fichero1, string fichero2);

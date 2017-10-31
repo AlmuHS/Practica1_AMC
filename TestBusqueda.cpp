@@ -1,6 +1,7 @@
 #include "TestBusqueda.h"
 #define NUMREPETICIONES 100
 #include "Mtime.h"
+#include <iostream>
 
 using namespace std;
 using namespace std::chrono;
@@ -125,8 +126,8 @@ void TestBusqueda::comprobarMetodosBusqueda()
     AlgoritmosOrdenacion ordena;
     HashSearch testhash;
 
-    cout<<endl<<endl<<"Introduce la talla: ";
-    cin>>talla;
+    std::cout<<endl<<endl<<"Introduce la talla: ";
+    std::cin>>talla;
 
     vector<int> v(talla);
 
@@ -236,82 +237,51 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
     }
 }
 
-void TestBusqueda::evaluar(string caso, int metodo)
-{
-    int tallaIni, tallaFin, incTalla;
+void TestBusqueda::casoMedio(int metodo){
+    int tallaIni = 500,
+        tallaFin = 100000,
+        incTalla = 500;
     char opcion;
     double segundos = 0, tiempo;
-
     vector<double> tiempos;
-    string nombre_fichero = nombreAlgoritmo[metodo] + caso +".dat";
+    string nombre_fichero = nombreAlgoritmo[metodo] + ".dat";
     ofstream fichero(nombre_fichero.c_str());
 
-    if(caso == "Mejor")
-    {
-        tallaIni = 500;
-        tallaFin = 100000;
-        incTalla = 500;
-    }
-    else if(caso == "Medio" || caso == "Peor")
-    {
-        tallaIni = 100;
-        tallaFin = 1000;
-        incTalla = 100;
-    }
-
-
-    cout<<"Talla\t\t"<<"Tiempo\n\n";
-    for(int i = tallaIni; i < tallaFin; i += incTalla)
-    {
-        int pos;
-        //ConjuntoInt v(i);
-        vector<int> v(i);
-        int contador = 0;
-        segundos = 0;
-
-        if(caso == "Medio") pos = i / 4;
-        else if(caso == "Mejor")
-        {
-
-            if(metodo == BINARIA) pos = i / 2;
-            else if(metodo == SECUENCIAL) pos = 0;
-        }
-        else if(caso == "Peor") pos = i - 1;
-
-        while(contador < NUMREPETICIONES)
-        {
+	cout<<"Talla\t\t"<<"Tiempo\n\n";
+	for(int i=tallaIni; i<tallaFin; i+=incTalla){
+		//ConjuntoInt v(i);
+		vector<int> v(i);
+		int contador=0;
+		segundos=0;
+		while(contador < NUMREPETICIONES){
             //v.GeneraVector();
-            segundos += Buscar(v, metodo, v[pos]);
-            contador++;
-        }
+			segundos += Buscar(v, metodo, v[i/4]);
+			contador++;
+		}
+		tiempo = segundos/NUMREPETICIONES;
+		cout<<i<<"\t\t"<<tiempo<<endl;
+		tiempos.push_back(tiempo);
+	}//fin for
 
-        tiempo = segundos / NUMREPETICIONES;
-        cout<<i<<"\t\t"<<tiempo<<endl;
-        tiempos.push_back(tiempo);
-    }
-
-    cout<<"\n\nGrabar los datos en el fichero "<<nombre_fichero<<" ? (s/n): ";
-    cin>>opcion;
-
-    if(opcion=='s')
-    {
-        for(unsigned int j = 0; j < tiempos.size(); j++)
-        {
-            fichero<<incTalla * j + incTalla<<"\t\t"<< tiempos[j]<<endl;
+	cout<<"\n\nGrabar los datos en el fichero "<<nombre_fichero<<" ? (s/n): ";
+	cin>>opcion;
+	if(opcion=='s'){
+        for(unsigned int j=0; j<tiempos.size(); j++){
+            fichero<<500*j+500<<"\t\t"<<tiempos[j]<<endl;
         }
         cout<<"\n\nDatos grabados en el fichero "<<nombre_fichero
             <<"\n\nGenerar grafica de resultados? (s/n): ";
         cin>>opcion;
         if(opcion=='s') generar_grafica(nombre_fichero);
 
-#ifdef __linux__
-        system("clear");
-#elif defined _WIN32 || defined _WIN64
-        system("cls");
-#endif
-    }
-
+        #ifdef __linux__
+            system("clear");
+        #elif defined _WIN32 || defined _WIN64
+            system("cls");
+        #endif
+	}
 }
+
 
 void TestBusqueda::generar_grafica(string metodo)
 {

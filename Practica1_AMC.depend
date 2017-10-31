@@ -299,10 +299,9 @@
 	"TestBusqueda.h"
 	"TestOrdenacion.h"
 
-1509451122 /home/almu/Practica1_AMC/TestBusqueda.h
+1509455811 /home/almu/Practica1_AMC/TestBusqueda.h
 	<vector>
 	"AlgoritmosBusqueda.h"
-	"ConjuntoInt.h"
 	"Mtime.h"
 	"AlgoritmosOrdenacion.h"
 	"HashSearch.h"
@@ -323,7 +322,7 @@
 	<fstream>
 	<chrono>
 
-1508847274 source:/home/almu/Practica1_AMC/Menu.cpp
+1509455835 source:/home/almu/Practica1_AMC/Menu.cpp
 	"Menu.h"
 
 1509451508 source:/home/almu/Practica1_AMC/MergeSort.cpp

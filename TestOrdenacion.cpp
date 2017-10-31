@@ -11,7 +11,6 @@
 #include "QuickSort.h"
 #include "MergeSort.h"
 #include "TestOrdenacion.h"
-#include "ConjuntoInt.h"
 #include "Mtime.h"
 #include <string>
 #include <iomanip>
@@ -78,7 +77,7 @@ TestOrdenacion::~TestOrdenacion() {}
 
         }
         QueryPerformanceCounter(&t_final);
-        tiempo=t.performancecounter_diff(&t_final, &t_inicial) * 1000;
+        tiempo = t.performancecounter_diff(&t_final, &t_inicial) * 1000;
 
         return tiempo;
     }
@@ -156,22 +155,23 @@ void TestOrdenacion::comprobarMetodosOrdenacion()
     int talla;
     cout<<endl<<endl<<"Introduce la talla: ";
     cin>>talla;
-#if defined _WIN32 || defined _WIN64
-    system("cls");
-    system("pause");
-#elif defined __linux__ || defined __unix__
-    system("clear");
-#endif // defined
+
+    #if defined _WIN32 || defined _WIN64
+        system("cls");
+        system("pause");
+    #elif defined __linux__ || defined __unix__
+        system("clear");
+    #endif // defined
+
     for (unsigned int metodo = 0; metodo < nombreAlgoritmo.size(); metodo++)
     {
-        //ConjuntoInt *v= new ConjuntoInt(talla);
         vector<int> v(talla);
         //v->GeneraVector();
         cout <<endl<<endl<< "vector inicial para el metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
-        //Mostrar por pantalla
+        //TODO: Mostrar vector por pantalla
         ordenarArrayDeInt(v, metodo);
         cout<<endl<<endl<<"Array ordenado con metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
-        //Mostrar por pantalla
+        //TODO: Mostrar vector por pantalla
         cout<<endl;
     }
 }
@@ -186,29 +186,31 @@ void TestOrdenacion::casoMedio(int metodo)
     int tallaIni = 500,
         tallaFin = 20000,
         incTalla = 500;
+
     vector<double> tiempos;
-    string nombre_fichero=nombreAlgoritmo[metodo]+".dat";
+    string nombre_fichero = nombreAlgoritmo[metodo] + ".dat";
     ofstream fichero(nombre_fichero.c_str());
-    char opcion;
-    double segundos=0, tiempo;
+
+    double segundos = 0, tiempo;
     AlgoritmosOrdenacion ordena;
 
-    cout<<"Ordenacion por "<<nombreAlgoritmo[metodo]<<". Tiempos de ejecucion promedio\n";
+    cout<<"Ordenacion por " << nombreAlgoritmo[metodo] << ". Tiempos de ejecucion promedio\n";
     cout<<"\nTalla\t\t"<<"Tiempo\n\n";
 
-    for(int i=tallaIni; i<tallaFin; i+=incTalla)
+    for(int i = tallaIni; i < tallaFin; i += incTalla)
     {
         std::vector<int> v(i);
-        int contador=0;
-        segundos=0;
+        int contador = 0;
+        segundos = 0;
+
         while(contador < NUMREPETICIONES)
         {
             //v.GeneraVector();
-            segundos+=ordenarArrayDeInt(v, metodo);
+            segundos += ordenarArrayDeInt(v, metodo);
             contador++;
         }
-        tiempo=segundos/NUMREPETICIONES;
-        cout<<i<<"\t\t"<<tiempo<<endl;
+        tiempo = segundos / NUMREPETICIONES;
+        cout << i << "\t\t" << tiempo << endl;
     }
 }
 
@@ -224,38 +226,36 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
         tallaFin = 20000,
         incTalla = 500;
 
-    double segundos1=0, segundos2=0, tiempo1, tiempo2;
+    double segundos1 = 0, segundos2 = 0, tiempo1, tiempo2;
     AlgoritmosOrdenacion ordena;
     string met1, met2;
-    met1=nombreAlgoritmo[metodo1];
-    met2=nombreAlgoritmo[metodo2];
+    met1 = nombreAlgoritmo[metodo1];
+    met2 = nombreAlgoritmo[metodo2];
     vector<double> tiempos1, tiempos2;
     char opcion;
 
-    cout<<"Talla\t\t"<<met1<<"\t\t"<<met2<<endl<<endl;
-    met1+=".dat";
-    met2+=".dat";
+    cout<< "Talla\t\t" << met1 << "\t\t" << met2 << endl << endl;
+    met1 += ".dat";
+    met2 += ".dat";
     ofstream fichero1(met1.c_str()), fichero2(met2.c_str());
-    for(int i=tallaIni; i<tallaFin; i+=incTalla)
+
+    for(int i = tallaIni; i < tallaFin; i += incTalla)
     {
-        //ConjuntoInt v(i);
-        //int *vector=v.get_datos();
-        //int *copia = v.get_datos();
         vector<int> v(i);
         vector<int> copia = v;
 
-        segundos1=0;
-        int contador=0;
+        segundos1 = 0;
+        int contador = 0;
         while(contador < NUMREPETICIONES)
         {
             //v.GeneraVector();
-            segundos1+=ordenarArrayDeInt(v, metodo1);
-            segundos2+=ordenarArrayDeInt(copia, metodo2);
+            segundos1 += ordenarArrayDeInt(v, metodo1);
+            segundos2 += ordenarArrayDeInt(copia, metodo2);
             contador++;
         }
-        tiempo1=segundos1/NUMREPETICIONES;
-        tiempo2=segundos2/NUMREPETICIONES;
-        cout<<i<<"\t\t"<<tiempo1<<"\t\t"<<tiempo2<<endl;
+        tiempo1 = segundos1 / NUMREPETICIONES;
+        tiempo2 = segundos2 / NUMREPETICIONES;
+        cout << i << "\t\t" << tiempo1 << "\t\t" << tiempo2 << endl;
 
         tiempos1.push_back(tiempo1);
         tiempos2.push_back(tiempo2);
@@ -263,13 +263,15 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
 
     cout<<"\n\nGrabar datos en ficheros ? (s/n): ";
     cin>>opcion;
-    if(opcion=='s')
+
+    if(opcion == 's')
     {
-        for(unsigned int j=0; j<tiempos1.size(); j++)
+        for(unsigned int j = 0; j < tiempos1.size(); j++)
         {
-            fichero1<<j*500+500<<"\t\t"<<tiempos1[j]<<endl;
-            fichero2<<j*500+500<<"\t\t"<<tiempos2[j]<<endl;
+            fichero1 << j*500+500 << "\t\t" << tiempos1[j] << endl;
+            fichero2 << j*500+500 << "\t\t" << tiempos2[j] << endl;
         }
+
         cout<<"\nDatos guardados en los ficheros "<<met1<<" y "<<met2<<endl
             <<"\nGenerar grafica de resultados? (s/n): ";
         cin>>opcion;
@@ -295,24 +297,28 @@ void TestOrdenacion::generar_grafica(string metodo)
     fout << "set xlabel \"Talla (n)\"" << endl;
     fout << "set ylabel \"Tiempo (ms)\"" << endl;
     fout << "plot \"" << metodo << "\" using 1:2 with lines" << endl;
+
     if(metodo=="Shell.dat")
     {
         fout << "InsDir(x) = a + b*x*log(x)*log(x)" << endl;
         fout << "fit InsDir(x) \"" + metodo + "\" using 1:2 via a,b" << endl;
         fout << "plot \"" + metodo + "\" using 1:2, InsDir(x)" << endl;
     }
+
     else if (metodo == "MergeSort.dat" || metodo == "Heapsort.dat" || metodo == "QuickSort.dat")
     {
         fout << "quick(x) = a*x*log(x)" << endl;
         fout << "fit quick(x) \"" + metodo + "\" using 1:2 via a" << endl;
         fout << "plot \"" + metodo + "\" using 1:2, quick(x)" << endl;
     }
+
     else if (metodo == "Burbuja.dat" || metodo == "Insercion.dat" || metodo == "Seleccion.dat")
     {
         fout << "quick(x) = a*x*x + b" << endl;
         fout << "fit quick(x) \"" + metodo + "\" using 1:2 via a, b" << endl;
         fout << "plot \"" + metodo + "\" using 1:2, quick(x)" << endl;
     }
+
     fout << "set terminal png" << endl;
     fout << "set output \"" << metodo << ".png\"" << endl;
     fout << "replot" << endl;
@@ -330,9 +336,10 @@ void TestOrdenacion::generar_grafica(string metodo)
 void TestOrdenacion::generar_grafica(string fichero1, string fichero2)
 {
     ofstream graf("CmdCMP.plt");
-#if defined __linux__ || defined __unix__
-    graf<<"#!/usr/bin/gnuplot"<<endl;
-#endif
+
+    #if defined __linux__ || defined __unix__
+        graf<<"#!/usr/bin/gnuplot"<<endl;
+    #endif
 
     graf << "set title \""<<"Comparacion tiempos entre " << fichero1 <<" y "<< fichero2 << "\"" << "\n";
     graf << "set key top left vertical inside\n";
@@ -347,11 +354,12 @@ void TestOrdenacion::generar_grafica(string fichero1, string fichero2)
     graf << "replot" << endl;
     graf << "pause 10 \"Pulse Enter para continuar...\"" << endl;
     graf.close();
-#if defined __linux__ || defined __unix__
-    system("chmod +x CmdCMP.plt");
-    system("./CmdCMP.plt");
-#elif defined _WIN32 || defined _WIN64
-    system("CmdCMP.plt");
-#endif
+
+    #if defined __linux__ || defined __unix__
+        system("chmod +x CmdCMP.plt");
+        system("./CmdCMP.plt");
+    #elif defined _WIN32 || defined _WIN64
+        system("CmdCMP.plt");
+    #endif
 }
 

@@ -135,7 +135,7 @@ void Menu::menu_busquedas(){
             #elif defined __linux__
                  system("clear");
             #endif // defined
-            buscar.evaluar("Medio", opcion);
+            buscar.casoMedio(opcion);
         break;
 
         case 3:
