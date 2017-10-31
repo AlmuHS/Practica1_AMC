@@ -209,23 +209,6 @@ void TestOrdenacion::casoMedio(int metodo)
         }
         tiempo=segundos/NUMREPETICIONES;
         cout<<i<<"\t\t"<<tiempo<<endl;
-
-        tiempos.push_back(tiempo);
-    }//fin for
-
-    cout<<"\n\nGrabar los datos en el fichero "<<nombre_fichero<<" ? (s/n): ";
-    cin>>opcion;
-    if(opcion=='s')
-    {
-        for(unsigned int j=0; j<tiempos.size(); j++)
-        {
-            fichero<<500*j+500<<"\t\t"<<tiempos[j]<<endl;
-        }
-        cout<<"\n\nDatos grabados en el fichero "<<nombre_fichero
-            <<"\n\nGenerar grafica de resultados? (s/n): ";
-        cin>>opcion;
-        if(opcion=='s') generar_grafica(nombre_fichero);
-        fichero.close();
     }
 }
 
@@ -255,16 +238,19 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
     ofstream fichero1(met1.c_str()), fichero2(met2.c_str());
     for(int i=tallaIni; i<tallaFin; i+=incTalla)
     {
-        ConjuntoInt v(i);
-        int *vector=v.get_datos();
-        int *copia = v.get_datos();
+        //ConjuntoInt v(i);
+        //int *vector=v.get_datos();
+        //int *copia = v.get_datos();
+        vector<int> v(i);
+        vector<int> copia = v;
+
         segundos1=0;
         int contador=0;
         while(contador < NUMREPETICIONES)
         {
-            v.GeneraVector();
-            segundos1+=ordenarArrayDeInt(vector, i, metodo1);
-            segundos2+=ordenarArrayDeInt(copia, i, metodo2);
+            //v.GeneraVector();
+            segundos1+=ordenarArrayDeInt(v, metodo1);
+            segundos2+=ordenarArrayDeInt(copia, metodo2);
             contador++;
         }
         tiempo1=segundos1/NUMREPETICIONES;
@@ -291,61 +277,6 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
         if(opcion == 's') generar_grafica(met1, met2);
     }
 
-}
-
-void TestOrdenacion::casoMejor(int metodo)
-{
-    int tallaIni = 500,
-        tallaFin = 10000,
-        incTalla = 1000;
-
-    double segundos=0, tiempo;
-    AlgoritmosOrdenacion ordena;
-
-    cout<<"Talla\t\t"<<"Tiempo\n\n";
-    for(int i=tallaIni; i<tallaFin; i+=incTalla)
-    {
-        ConjuntoInt v(i);
-        int *vector=v.get_datos();
-        int contador=0;
-        segundos=0;
-        while(contador < NUMREPETICIONES)
-        {
-            v.GeneraVector();
-            segundos+=ordenarArrayDeInt(vector, i, metodo);
-            contador++;
-        }
-        tiempo=segundos/NUMREPETICIONES;
-        cout<<i<<"\t\t"<<tiempo<<endl;
-    }//fin for
-}
-
-void TestOrdenacion::casoPeor(int metodo)
-{
-    int tallaIni = 100,
-        tallaFin = 1000,
-        incTalla = 100;
-
-    double segundos=0, tiempo;
-    AlgoritmosOrdenacion ordena;
-
-    cout<<"Talla\t\t"<<"Tiempo\n\n";
-    for(int i=tallaIni; i<tallaFin; i+=incTalla)
-    {
-        ConjuntoInt v(i);
-        v.GeneraVector();
-        int contador=0;
-        segundos=0;
-        v.ordena_inverso();
-        int *vector=v.get_datos();
-        while(contador < NUMREPETICIONES)
-        {
-            segundos+=ordenarArrayDeInt(vector, i, metodo);
-            contador++;
-        }
-        tiempo=segundos/NUMREPETICIONES;
-        cout<<i<<"\t\t"<<tiempo<<endl;
-    }//fin for
 }
 
 void TestOrdenacion::generar_grafica(string metodo)
