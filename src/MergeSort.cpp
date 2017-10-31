@@ -1,4 +1,4 @@
-#include "MergeSort.h"
+#include "../include/MergeSort.h"
 
 void MergeSort::OrdenaMergesort(std::vector<int> v){
     OrdenaMergesort(v, 0, v.size() - 1);

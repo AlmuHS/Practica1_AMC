@@ -7,11 +7,12 @@
  *    burbuja, inserción, y selección, permitiendo guardar los datos e imprimir la
  *    gráfica correspondiente.
  */
-#include "AlgoritmosOrdenacion.h"
-#include "QuickSort.h"
-#include "MergeSort.h"
-#include "TestOrdenacion.h"
-#include "Mtime.h"
+#include "../include/AlgoritmosOrdenacion.h"
+#include "../include/QuickSort.h"
+#include "../include/MergeSort.h"
+#include "../include/TestOrdenacion.h"
+#include "../include/Mtime.h"
+
 #include <string>
 #include <iomanip>
 #include <iostream>
@@ -40,6 +41,7 @@ TestOrdenacion::~TestOrdenacion() {}
  */
 
 #if defined _WIN32 || defined _WIN64
+
     double TestOrdenacion::ordenarArrayDeInt(vector<int> v,int size,int metodo)
     {
         AlgoritmosOrdenacion estrategia;

@@ -1,4 +1,4 @@
-#include "GenVector.h"
+#include "../include/GenVector.h"
 
 GenVector::GenVector(std::vector<int> v)
 {
@@ -11,7 +11,6 @@ std::vector<int> GenVector::GenRandomVector(){
 }
 
 void GenVector::showVector(std::vector<int> v){
-
     for(int i = 0; i < v.size(); i++){
         std::cout<<v[i]<<" ";
     }

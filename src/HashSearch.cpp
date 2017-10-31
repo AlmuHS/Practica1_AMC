@@ -1,4 +1,4 @@
-#include "HashSearch.h"
+#include "../include/HashSearch.h"
 
 using namespace std;
 

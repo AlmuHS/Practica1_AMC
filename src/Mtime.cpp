@@ -1,4 +1,4 @@
-#include "Mtime.h"
+#include "../include/Mtime.h"
 /* retorna "a - b" en segundos */
 
 #if defined _WIN32 || defined _WIN64

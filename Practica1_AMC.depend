@@ -444,10 +444,88 @@
 	<iomanip>
 	<iostream>
 
-1509479980 source:/home/almu/Practica1_AMC/src/GenVector.cpp
-	"GenVector.h"
+1509492153 source:/home/almu/Practica1_AMC/src/GenVector.cpp
+	"../include/GenVector.h"
 
 1509479965 /home/almu/Practica1_AMC/include/GenVector.h
 	<vector>
+	<iostream>
+
+1509492133 source:/home/almu/Practica1_AMC/src/AlgoritmosBusqueda.cpp
+	"../include/AlgoritmosBusqueda.h"
+	"../include/AlgoritmosOrdenacion.h"
+
+1509473208 /home/almu/Practica1_AMC/include/AlgoritmosBusqueda.h
+	<vector>
+
+1509473208 /home/almu/Practica1_AMC/include/AlgoritmosOrdenacion.h
+	<algorithm>
+	<queue>
+	<vector>
+
+1509492142 source:/home/almu/Practica1_AMC/src/AlgoritmosOrdenacion.cpp
+	"../include/AlgoritmosOrdenacion.h"
+
+1509492162 source:/home/almu/Practica1_AMC/src/HashSearch.cpp
+	"../include/HashSearch.h"
+
+1509473208 /home/almu/Practica1_AMC/include/HashSearch.h
+	<unordered_map>
+	<vector>
+
+1509492171 source:/home/almu/Practica1_AMC/src/main.cpp
+	<iostream>
+	"../include/Menu.h"
+
+1509473208 /home/almu/Practica1_AMC/include/Menu.h
+	"TestBusqueda.h"
+	"TestOrdenacion.h"
+
+1509473208 /home/almu/Practica1_AMC/include/TestBusqueda.h
+	<vector>
+	"AlgoritmosBusqueda.h"
+	"Mtime.h"
+	"AlgoritmosOrdenacion.h"
+	"HashSearch.h"
+	<vector>
+	<fstream>
+	<chrono>
+
+1509473208 /home/almu/Practica1_AMC/include/Mtime.h
+	<stdio.h>
+	<ctime>
+	<windows.h>
+
+1509473208 /home/almu/Practica1_AMC/include/TestOrdenacion.h
+	<map>
+	<vector>
+	<string>
+	<iostream>
+	<fstream>
+	<chrono>
+
+1509492178 source:/home/almu/Practica1_AMC/src/Menu.cpp
+	"../include/Menu.h"
+
+1509492186 source:/home/almu/Practica1_AMC/src/MergeSort.cpp
+	"../include/MergeSort.h"
+
+1509473208 /home/almu/Practica1_AMC/include/MergeSort.h
+	<vector>
+
+1509492194 source:/home/almu/Practica1_AMC/src/Mtime.cpp
+	"../include/Mtime.h"
+
+1509492205 source:/home/almu/Practica1_AMC/src/QuickSort.cpp
+	"../include/QuickSort.h"
+
+1509473208 /home/almu/Practica1_AMC/include/QuickSort.h
+	<algorithm>
+	<vector>
+
+1509492226 source:/home/almu/Practica1_AMC/src/TestBusqueda.cpp
+	"../include/TestBusqueda.h"
+	"../include/Mtime.h"
+	"../include/GenVector.h"
 	<iostream>
 

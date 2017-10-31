@@ -1,6 +1,6 @@
-#include "TestBusqueda.h"
-#include "Mtime.h"
-#include "GenVector.h"
+#include "../include/TestBusqueda.h"
+#include "../include/Mtime.h"
+#include "../include/GenVector.h"
 
 #include <iostream>
 #define NUMREPETICIONES 100
@@ -23,7 +23,7 @@ TestBusqueda::~TestBusqueda(void)
 
 #if defined _WIN32 || defined _WIN64
 
-double TestBusqueda::Buscar(vector<int> v, int size, int metodo, int key)
+double TestBusqueda::Buscar(vector<int> v, int metodo, int key)
 {
     AlgoritmosBusqueda test;
     double segundos = 0;
