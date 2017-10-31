@@ -2,6 +2,7 @@
 #define HASHSEARCH_H
 
 #include <unordered_map>
+#include <vector>
 
 using namespace std;
 
@@ -14,12 +15,12 @@ class HashSearch
     public:
         HashSearch();
 
-        void add_element_opened(int v[], int size);
+        void add_element_opened(vector<int> v);
 
-        void add_element_closed(int v[], int size);
+        void add_element_closed(vector<int> v);
 
 
-        void pop_element(int v[], int size);
+        void pop_element(vector<int> v);
 
         int search_element_opened(int key);
 

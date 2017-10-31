@@ -44,7 +44,7 @@ public:
  * param metodo: Metodo de ordenacion a utilizar
  * return Tiempo empleado en la ordenación (en milisegundos)
  */
-	static double ordenarArrayDeInt(int v[],int size,int metodo);
+	static double ordenarArrayDeInt(vector<int> v,int metodo);
 
 /*
  * Comprueba que los metodos de ordenación funcionan correctamente

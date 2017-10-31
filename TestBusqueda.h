@@ -30,7 +30,7 @@ public:
 	void casoMedio(int metodo);
 	void casoMejor(int metodo);
 	void casoPeor(int metodo);
-	double Buscar(int v[], int metodo, int size, int key);
+	double Buscar(std::vector<int> v, int metodo, int key);
 	void generar_grafica(string metodo);
 	void generar_grafica(string fichero1, string fichero2);
 };

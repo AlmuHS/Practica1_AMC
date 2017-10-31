@@ -2,16 +2,17 @@
 #define QUICKSORT_H
 
 #include <algorithm>    // std::swap
+#include <vector>
 
 
 class QuickSort
 {
     public:
-        void OrdenaQuickSort(int v[], int size);
+        void OrdenaQuickSort(std::vector<int> v);
 
-        void OrdenaQuickSort(int v[], int e, int d);
+        void OrdenaQuickSort(std::vector<int> v, int e, int d);
 
-        int Partition(int v[], int e, int d);
+        int Partition(std::vector<int> v, int e, int d);
 };
 
 #endif // QUICKSORT_H

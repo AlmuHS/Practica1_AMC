@@ -11,13 +11,12 @@ AlgoritmosOrdenacion::~AlgoritmosOrdenacion(void)
 {
 }
 
-void AlgoritmosOrdenacion::OrdenaBurbuja(int v[], int size){
+void AlgoritmosOrdenacion::OrdenaBurbuja(vector<int> v){
     int aux_elem;
-    //int movs;
-    //movs = 0;
-    for (int i = 0; i < size - 1; i++)
+
+    for (int i = 0; i < v.size() - 1; i++)
     {
-        for (int j = size -1; j > i; j--)
+        for (int j = v.size() -1; j > i; j--)
         {
             if (v[j] < v[j-1])
             {
@@ -30,10 +29,10 @@ void AlgoritmosOrdenacion::OrdenaBurbuja(int v[], int size){
     }//fin for i
 }
 
-void AlgoritmosOrdenacion::OrdenaInsercion(int v[], int size){
+void AlgoritmosOrdenacion::OrdenaInsercion(vector<int> v){
 	int x, j, aux;
 
-    for (int i=1; i<size; i++)
+    for (int i = 1; i < v.size(); i++)
 	{
 		x=v[i];
 		j=i-1;
@@ -48,24 +47,27 @@ void AlgoritmosOrdenacion::OrdenaInsercion(int v[], int size){
 	}
 }
 
-void AlgoritmosOrdenacion::OrdenaSeleccion(int v[], int size){
-	int posminimo=0, aux;
-	for(int i=0; i<size; i++){
-		posminimo=i;
-		for(int j=i+1; j<size; j++){
-			if(v[j]<v[posminimo]) posminimo=j;
+void AlgoritmosOrdenacion::OrdenaSeleccion(vector<int> v){
+	int posminimo = 0, aux;
+
+	for(int i = 0; i < v.size(); i++){
+		posminimo = i;
+
+		for(int j = i+1; j < v.size(); j++){
+			if(v[j] < v[posminimo]) posminimo = j;
 		}
-		aux=v[posminimo];
-		v[posminimo]=v[i];
-		v[i]=aux;
+
+		aux = v[posminimo];
+		v[posminimo] = v[i];
+		v[i] = aux;
 	}
 }
 
 
-void AlgoritmosOrdenacion::OrdenaShell(int v[], int size){
-    for(int h = size/2; h > 0; h/=2){
+void AlgoritmosOrdenacion::OrdenaShell(vector<int> v){
+    for(int h = v.size() / 2; h > 0; h /= 2){
 
-        for(int i = h; i < size; i++){
+        for(int i = h; i < v.size(); i++){
             int j = i;
             int elem = v[i];
 
@@ -81,14 +83,14 @@ void AlgoritmosOrdenacion::OrdenaShell(int v[], int size){
 
 
 
-void AlgoritmosOrdenacion::OrdenaHeapSort(int v[], int size){
+void AlgoritmosOrdenacion::OrdenaHeapSort(vector<int> v){
     priority_queue <int> pq;
 
-    for(int i=0; i<size; i++)
+    for(int i = 0; i < v.size(); i++)
         pq.push(v[i]);
 
-    for(int i=size-1; i>= 0; i--){
-        v[i]=pq.top();
+    for(int i = v.size() - 1; i >= 0; i--){
+        v[i] = pq.top();
         pq.pop();
     }
 

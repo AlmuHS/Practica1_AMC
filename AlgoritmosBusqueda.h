@@ -1,3 +1,5 @@
+#include <vector>
+
 
 class AlgoritmosBusqueda
 {
@@ -11,7 +13,7 @@ public:
 	* param key: clave o elemento a buscar
 	* return posición de la clave en el array
 	*/
-	int busquedaBinaria(int v[], int size, int key);
+	int busquedaBinaria(std::vector<int> v, int key);
 	/*
 	* Función busquedaSecuencial, implementa el método de búsqueda secuencial
 	* param v: el array de enteros donde buscar
@@ -19,7 +21,7 @@ public:
 	* param key: clave o elemento a buscar
 	* return posición de la clave en el array
 	*/
-	int busquedaSecuencial(int v[], int size, int key);
+	int busquedaSecuencial(std::vector<int> v, int key);
 
 
 };

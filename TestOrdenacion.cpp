@@ -41,7 +41,7 @@ TestOrdenacion::~TestOrdenacion() {}
  */
 
 #if defined _WIN32 || defined _WIN64
-    double TestOrdenacion::ordenarArrayDeInt(int v[],int size,int metodo)
+    double TestOrdenacion::ordenarArrayDeInt(vector<int> v,int size,int metodo)
     {
         AlgoritmosOrdenacion estrategia;
         QuickSort QS;
@@ -85,7 +85,7 @@ TestOrdenacion::~TestOrdenacion() {}
 
 #elif defined __linux__ || defined __unix__
 
-    double TestOrdenacion::ordenarArrayDeInt(int v[],int size,int metodo)
+    double TestOrdenacion::ordenarArrayDeInt(vector<int> v,int metodo)
     {
         AlgoritmosOrdenacion estrategia;
         QuickSort QS;
@@ -99,43 +99,43 @@ TestOrdenacion::~TestOrdenacion() {}
         {
         case BURBUJA:
             t_ini = high_resolution_clock::now();
-            estrategia.OrdenaBurbuja(v, size);
+            estrategia.OrdenaBurbuja(v);
             t_fin = high_resolution_clock::now();
             break;
 
         case INSERCION:
             t_ini = high_resolution_clock::now();
-            estrategia.OrdenaInsercion(v, size);
+            estrategia.OrdenaInsercion(v);
             t_fin = high_resolution_clock::now();
             break;
 
         case SELECCION:
             t_ini = high_resolution_clock::now();
-            estrategia.OrdenaSeleccion(v, size);
+            estrategia.OrdenaSeleccion(v);
             t_fin = high_resolution_clock::now();
             break;
 
         case SHELL:
             t_ini = high_resolution_clock::now();
-            estrategia.OrdenaShell(v, size);
+            estrategia.OrdenaShell(v);
             t_fin = high_resolution_clock::now();
             break;
 
         case HEAPSORT:
             t_ini = high_resolution_clock::now();
-            estrategia.OrdenaHeapSort(v, size);
+            estrategia.OrdenaHeapSort(v);
             t_fin = high_resolution_clock::now();
             break;
 
         case QUICKSORT:
             t_ini = high_resolution_clock::now();
-            QS.OrdenaQuickSort(v, size);
+            QS.OrdenaQuickSort(v);
             t_fin = high_resolution_clock::now();
             break;
 
         case MERGESORT:
             t_ini = high_resolution_clock::now();
-            MS.OrdenaMergesort(v,size);
+            MS.OrdenaMergesort(v);
             t_fin = high_resolution_clock::now();
             break;
 
@@ -164,15 +164,15 @@ void TestOrdenacion::comprobarMetodosOrdenacion()
 #endif // defined
     for (unsigned int metodo = 0; metodo < nombreAlgoritmo.size(); metodo++)
     {
-        ConjuntoInt *v= new ConjuntoInt(talla);
-        v->GeneraVector();
+        //ConjuntoInt *v= new ConjuntoInt(talla);
+        vector<int> v(talla);
+        //v->GeneraVector();
         cout <<endl<<endl<< "vector inicial para el metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
-        v->escribe();
-        ordenarArrayDeInt(v->get_datos(), talla, metodo);
+        //Mostrar por pantalla
+        ordenarArrayDeInt(v, metodo);
         cout<<endl<<endl<<"Array ordenado con metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
-        v->escribe();
+        //Mostrar por pantalla
         cout<<endl;
-        v->vaciar();
     }
 }
 
@@ -198,13 +198,13 @@ void TestOrdenacion::casoMedio(int metodo)
 
     for(int i=tallaIni; i<tallaFin; i+=incTalla)
     {
-        ConjuntoInt v(i);
+        std::vector<int> v(i);
         int contador=0;
         segundos=0;
         while(contador < NUMREPETICIONES)
         {
-            v.GeneraVector();
-            segundos+=ordenarArrayDeInt(v.get_datos(), i, metodo);
+            //v.GeneraVector();
+            segundos+=ordenarArrayDeInt(v, metodo);
             contador++;
         }
         tiempo=segundos/NUMREPETICIONES;

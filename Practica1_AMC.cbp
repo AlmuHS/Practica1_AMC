@@ -37,8 +37,6 @@
 		<Unit filename="AlgoritmosBusqueda.h" />
 		<Unit filename="AlgoritmosOrdenacion.cpp" />
 		<Unit filename="AlgoritmosOrdenacion.h" />
-		<Unit filename="ConjuntoInt.cpp" />
-		<Unit filename="ConjuntoInt.h" />
 		<Unit filename="HashSearch.cpp" />
 		<Unit filename="HashSearch.h" />
 		<Unit filename="Menu.cpp" />
