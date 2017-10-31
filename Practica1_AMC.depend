@@ -261,19 +261,19 @@
 1477957469 source:c:\users\almu\desktop\practica1_amc\menu.cpp
 	"Menu.h"
 
-1509450905 source:/home/almu/Practica1_AMC/AlgoritmosBusqueda.cpp
+1509473208 source:/home/almu/Practica1_AMC/AlgoritmosBusqueda.cpp
 	"AlgoritmosBusqueda.h"
 	"AlgoritmosOrdenacion.h"
 
-1509450776 /home/almu/Practica1_AMC/AlgoritmosBusqueda.h
+1509473208 /home/almu/Practica1_AMC/AlgoritmosBusqueda.h
 	<vector>
 
-1509450872 /home/almu/Practica1_AMC/AlgoritmosOrdenacion.h
+1509473208 /home/almu/Practica1_AMC/AlgoritmosOrdenacion.h
 	<algorithm>
 	<queue>
 	<vector>
 
-1509450459 source:/home/almu/Practica1_AMC/AlgoritmosOrdenacion.cpp
+1509473208 source:/home/almu/Practica1_AMC/AlgoritmosOrdenacion.cpp
 	"AlgoritmosOrdenacion.h"
 
 1508241806 source:/home/almu/Practica1_AMC/ConjuntoInt.cpp
@@ -284,22 +284,22 @@
 	<cstdlib>
 	<ctime>
 
-1509451349 source:/home/almu/Practica1_AMC/HashSearch.cpp
+1509473208 source:/home/almu/Practica1_AMC/HashSearch.cpp
 	"HashSearch.h"
 
-1509451204 /home/almu/Practica1_AMC/HashSearch.h
+1509473208 /home/almu/Practica1_AMC/HashSearch.h
 	<unordered_map>
 	<vector>
 
-1508241806 source:/home/almu/Practica1_AMC/main.cpp
+1509473208 source:/home/almu/Practica1_AMC/main.cpp
 	<iostream>
 	"Menu.h"
 
-1508241806 /home/almu/Practica1_AMC/Menu.h
+1509473208 /home/almu/Practica1_AMC/Menu.h
 	"TestBusqueda.h"
 	"TestOrdenacion.h"
 
-1509455811 /home/almu/Practica1_AMC/TestBusqueda.h
+1509473208 /home/almu/Practica1_AMC/TestBusqueda.h
 	<vector>
 	"AlgoritmosBusqueda.h"
 	"Mtime.h"
@@ -309,12 +309,12 @@
 	<fstream>
 	<chrono>
 
-1508241806 /home/almu/Practica1_AMC/Mtime.h
+1509473208 /home/almu/Practica1_AMC/Mtime.h
 	<stdio.h>
 	<ctime>
 	<windows.h>
 
-1509453271 /home/almu/Practica1_AMC/TestOrdenacion.h
+1509473208 /home/almu/Practica1_AMC/TestOrdenacion.h
 	<map>
 	<vector>
 	<string>
@@ -322,35 +322,36 @@
 	<fstream>
 	<chrono>
 
-1509455835 source:/home/almu/Practica1_AMC/Menu.cpp
+1509473208 source:/home/almu/Practica1_AMC/Menu.cpp
 	"Menu.h"
 
-1509451508 source:/home/almu/Practica1_AMC/MergeSort.cpp
+1509473208 source:/home/almu/Practica1_AMC/MergeSort.cpp
 	"MergeSort.h"
 
-1509451488 /home/almu/Practica1_AMC/MergeSort.h
+1509473208 /home/almu/Practica1_AMC/MergeSort.h
 	<vector>
 
-1508241806 source:/home/almu/Practica1_AMC/Mtime.cpp
+1509473208 source:/home/almu/Practica1_AMC/Mtime.cpp
 	"Mtime.h"
 
-1509451582 source:/home/almu/Practica1_AMC/QuickSort.cpp
+1509473208 source:/home/almu/Practica1_AMC/QuickSort.cpp
 	"QuickSort.h"
 
-1509451559 /home/almu/Practica1_AMC/QuickSort.h
+1509473208 /home/almu/Practica1_AMC/QuickSort.h
 	<algorithm>
 	<vector>
 
-1509452853 source:/home/almu/Practica1_AMC/TestBusqueda.cpp
+1509480037 source:/home/almu/Practica1_AMC/TestBusqueda.cpp
 	"TestBusqueda.h"
 	"Mtime.h"
+	"GenVector.h"
+	<iostream>
 
-1509454450 source:/home/almu/Practica1_AMC/TestOrdenacion.cpp
+1509473912 source:/home/almu/Practica1_AMC/TestOrdenacion.cpp
 	"AlgoritmosOrdenacion.h"
 	"QuickSort.h"
 	"MergeSort.h"
 	"TestOrdenacion.h"
-	"ConjuntoInt.h"
 	"Mtime.h"
 	<string>
 	<iomanip>
@@ -441,5 +442,12 @@
 	"Mtime.h"
 	<string>
 	<iomanip>
+	<iostream>
+
+1509479980 source:/home/almu/Practica1_AMC/src/GenVector.cpp
+	"GenVector.h"
+
+1509479965 /home/almu/Practica1_AMC/include/GenVector.h
+	<vector>
 	<iostream>
 

@@ -1,7 +1,9 @@
 #include "TestBusqueda.h"
-#define NUMREPETICIONES 100
 #include "Mtime.h"
+#include "GenVector.h"
+
 #include <iostream>
+#define NUMREPETICIONES 100
 
 using namespace std;
 using namespace std::chrono;
@@ -126,22 +128,22 @@ void TestBusqueda::comprobarMetodosBusqueda()
     AlgoritmosOrdenacion ordena;
     HashSearch testhash;
 
-    std::cout<<endl<<endl<<"Introduce la talla: ";
-    std::cin>>talla;
+
+    std::cout << endl << endl << "Introduce la talla: ";
+    std::cin >> talla;
 
     vector<int> v(talla);
+    GenVector GV(v);
+    v = GV.GenRandomVector();
 
     for (unsigned int metodo = 0; metodo < nombreAlgoritmo.size(); metodo++)
     {
         int elem = v[talla];
-
         vector<int> copia = v;
 
-        for(int i = 0; i < talla; i++)
-            copia[i] = v[i];
-
         cout <<endl<<endl<< "vector inicial para el metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
-        //Mostrar por pantalla
+        GV.showVector(); //Mostrar por pantalla
+
 
         switch(metodo)
         {
@@ -149,9 +151,7 @@ void TestBusqueda::comprobarMetodosBusqueda()
         case BINARIA:
             ordena.OrdenaHeapSort(copia);
             cout<<"\nvector ordenado: "<<endl<<endl;
-
-            for(int j = 0; j < talla; j++)
-                cout<<copia[j]<<" ";
+            GV.showVector(copia);
 
             cout<<endl;
             pos = test.busquedaBinaria(copia, elem);

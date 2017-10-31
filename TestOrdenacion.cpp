@@ -231,7 +231,6 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
     string met1, met2;
     met1 = nombreAlgoritmo[metodo1];
     met2 = nombreAlgoritmo[metodo2];
-    vector<double> tiempos1, tiempos2;
     char opcion;
 
     cout<< "Talla\t\t" << met1 << "\t\t" << met2 << endl << endl;
@@ -246,6 +245,7 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
 
         segundos1 = 0;
         int contador = 0;
+
         while(contador < NUMREPETICIONES)
         {
             //v.GeneraVector();
@@ -253,12 +253,14 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
             segundos2 += ordenarArrayDeInt(copia, metodo2);
             contador++;
         }
+
         tiempo1 = segundos1 / NUMREPETICIONES;
         tiempo2 = segundos2 / NUMREPETICIONES;
         cout << i << "\t\t" << tiempo1 << "\t\t" << tiempo2 << endl;
 
-        tiempos1.push_back(tiempo1);
-        tiempos2.push_back(tiempo2);
+        fichero1 << i << "\t\t" << tiempo1 << endl;
+        fichero2 << i << "\t\t" << tiempo2 << endl;
+
     }//fin for
 
     cout<<"\n\nGrabar datos en ficheros ? (s/n): ";
@@ -266,12 +268,6 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
 
     if(opcion == 's')
     {
-        for(unsigned int j = 0; j < tiempos1.size(); j++)
-        {
-            fichero1 << j*500+500 << "\t\t" << tiempos1[j] << endl;
-            fichero2 << j*500+500 << "\t\t" << tiempos2[j] << endl;
-        }
-
         cout<<"\nDatos guardados en los ficheros "<<met1<<" y "<<met2<<endl
             <<"\nGenerar grafica de resultados? (s/n): ";
         cin>>opcion;
