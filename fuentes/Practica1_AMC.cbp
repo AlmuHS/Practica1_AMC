@@ -35,26 +35,26 @@
 			<Add option="-std=c++11" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="AlgoritmosBusqueda.cpp" />
-		<Unit filename="AlgoritmosBusqueda.h" />
-		<Unit filename="AlgoritmosOrdenacion.cpp" />
-		<Unit filename="AlgoritmosOrdenacion.h" />
-		<Unit filename="HashSearch.cpp" />
-		<Unit filename="HashSearch.h" />
-		<Unit filename="Menu.cpp" />
-		<Unit filename="Menu.h" />
-		<Unit filename="MergeSort.cpp" />
-		<Unit filename="MergeSort.h" />
-		<Unit filename="Mtime.cpp" />
-		<Unit filename="Mtime.h" />
-		<Unit filename="QuickSort.cpp" />
-		<Unit filename="QuickSort.h" />
-		<Unit filename="TestBusqueda.cpp" />
-		<Unit filename="TestBusqueda.h" />
-		<Unit filename="TestOrdenacion.cpp" />
-		<Unit filename="TestOrdenacion.h" />
+		<Unit filename="include/AlgoritmosBusqueda.h" />
+		<Unit filename="include/AlgoritmosOrdenacion.h" />
+		<Unit filename="include/HashSearch.h" />
+		<Unit filename="include/Menu.h" />
+		<Unit filename="include/MergeSort.h" />
+		<Unit filename="include/Mtime.h" />
+		<Unit filename="include/QuickSort.h" />
+		<Unit filename="include/TestBusqueda.h" />
+		<Unit filename="include/TestOrdenacion.h" />
 		<Unit filename="include/vector_ops.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="src/AlgoritmosBusqueda.cpp" />
+		<Unit filename="src/AlgoritmosOrdenacion.cpp" />
+		<Unit filename="src/HashSearch.cpp" />
+		<Unit filename="src/Menu.cpp" />
+		<Unit filename="src/MergeSort.cpp" />
+		<Unit filename="src/Mtime.cpp" />
+		<Unit filename="src/QuickSort.cpp" />
+		<Unit filename="src/TestBusqueda.cpp" />
+		<Unit filename="src/TestOrdenacion.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Unit filename="src/vector_ops.cpp" />
 		<Extensions>
 			<code_completion />
