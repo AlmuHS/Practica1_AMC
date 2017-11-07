@@ -7,10 +7,19 @@
  *    burbuja, inserción, y selección, permitiendo guardar los datos e imprimir la
  *    gráfica correspondiente.
  */
+<<<<<<< HEAD:src/TestOrdenacion.cpp
 
 #include "TestOrdenacion.h"
 
 #include "Mtime.h"
+=======
+#include "../include/AlgoritmosOrdenacion.h"
+#include "../include/QuickSort.h"
+#include "../include/MergeSort.h"
+#include "../include/TestOrdenacion.h"
+#include "../include/Mtime.h"
+
+>>>>>>> 98ef0e55704a2666b20fc497475a2f10a7098cf2:src/TestOrdenacion.cpp
 #include <string>
 #include <iomanip>
 #include <iostream>
@@ -39,7 +48,12 @@ TestOrdenacion::~TestOrdenacion() {}
  */
 
 #if defined _WIN32 || defined _WIN64
+<<<<<<< HEAD:src/TestOrdenacion.cpp
     double TestOrdenacion::ordenarArrayDeInt(vector<int> &v,int size,int metodo)
+=======
+
+    double TestOrdenacion::ordenarArrayDeInt(vector<int> v,int size,int metodo)
+>>>>>>> 98ef0e55704a2666b20fc497475a2f10a7098cf2:src/TestOrdenacion.cpp
     {
         AlgoritmosOrdenacion estrategia;
         QuickSort QS;
@@ -257,7 +271,10 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
     string met1, met2;
     met1 = nombreAlgoritmo[metodo1];
     met2 = nombreAlgoritmo[metodo2];
+<<<<<<< HEAD:src/TestOrdenacion.cpp
 
+=======
+>>>>>>> 98ef0e55704a2666b20fc497475a2f10a7098cf2:src/TestOrdenacion.cpp
     char opcion;
 
     cout<< "Talla\t\t" << met1 << "\t\t" << met2 << endl << endl;
@@ -273,6 +290,7 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
 
         segundos1 = 0;
         int contador = 0;
+
         while(contador < NUMREPETICIONES)
         {
             vops.GenRandomVector(v);
@@ -280,6 +298,7 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
             segundos2 += ordenarArrayDeInt(copia, metodo2);
             contador++;
         }
+
         tiempo1 = segundos1 / NUMREPETICIONES;
         tiempo2 = segundos2 / NUMREPETICIONES;
 
@@ -287,6 +306,10 @@ void TestOrdenacion::comparar(int metodo1, int metodo2)
 
         fichero1 << i << "\t\t" << tiempo1 << endl;
         fichero2 << i << "\t\t" << tiempo2 << endl;
+<<<<<<< HEAD:src/TestOrdenacion.cpp
+=======
+
+>>>>>>> 98ef0e55704a2666b20fc497475a2f10a7098cf2:src/TestOrdenacion.cpp
     }//fin for
 
     cout<<"\n\nGrabar datos en ficheros ? (s/n): ";

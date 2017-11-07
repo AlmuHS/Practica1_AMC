@@ -1,4 +1,4 @@
-#include "AlgoritmosOrdenacion.h"
+#include "../include/AlgoritmosOrdenacion.h"
 
 using namespace std;
 

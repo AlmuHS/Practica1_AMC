@@ -1,5 +1,5 @@
-#include "AlgoritmosBusqueda.h"
-#include "AlgoritmosOrdenacion.h"
+#include "../include/AlgoritmosBusqueda.h"
+#include "../include/AlgoritmosOrdenacion.h"
 
 AlgoritmosBusqueda::AlgoritmosBusqueda(void)
 {

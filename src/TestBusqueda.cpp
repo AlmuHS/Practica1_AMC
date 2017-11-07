@@ -1,7 +1,9 @@
-#include "TestBusqueda.h"
-#define NUMREPETICIONES 100
-#include "Mtime.h"
+#include "../include/TestBusqueda.h"
+#include "../include/Mtime.h"
+#include "../include/GenVector.h"
+
 #include <iostream>
+#define NUMREPETICIONES 100
 
 using namespace std;
 using namespace std::chrono;
@@ -21,7 +23,7 @@ TestBusqueda::~TestBusqueda(void)
 
 #if defined _WIN32 || defined _WIN64
 
-double TestBusqueda::Buscar(vector<int> v, int size, int metodo, int key)
+double TestBusqueda::Buscar(vector<int> v, int metodo, int key)
 {
     AlgoritmosBusqueda test;
     double segundos = 0;
@@ -127,10 +129,12 @@ void TestBusqueda::comprobarMetodosBusqueda()
     HashSearch testhash;
     vector_ops vops;
 
-    std::cout<<endl<<endl<<"Introduce la talla: ";
-    std::cin>>talla;
+
+    std::cout << endl << endl << "Introduce la talla: ";
+    std::cin >> talla;
 
     vector<int> v(talla);
+<<<<<<< HEAD:src/TestBusqueda.cpp
     vops.GenRandomVector(v);
 
     for (unsigned int metodo = 0; metodo < nombreAlgoritmo.size(); metodo++)
@@ -139,6 +143,19 @@ void TestBusqueda::comprobarMetodosBusqueda()
 
         cout <<endl<<endl<< "vector inicial para el metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
         vops.ShowVector(v); //Mostrar por pantalla
+=======
+    GenVector GV(v);
+    v = GV.GenRandomVector();
+
+    for (unsigned int metodo = 0; metodo < nombreAlgoritmo.size(); metodo++)
+    {
+        int elem = v[talla];
+        vector<int> copia = v;
+
+        cout <<endl<<endl<< "vector inicial para el metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
+        GV.showVector(); //Mostrar por pantalla
+
+>>>>>>> 98ef0e55704a2666b20fc497475a2f10a7098cf2:src/TestBusqueda.cpp
 
         vector<int> copia = v;
         switch(metodo)
@@ -146,9 +163,14 @@ void TestBusqueda::comprobarMetodosBusqueda()
 
         case BINARIA:
             ordena.OrdenaHeapSort(copia);
+<<<<<<< HEAD:src/TestBusqueda.cpp
 
             cout<<"\nvector ordenado: "<<endl<<endl;
             vops.ShowVector(copia);
+=======
+            cout<<"\nvector ordenado: "<<endl<<endl;
+            GV.showVector(copia);
+>>>>>>> 98ef0e55704a2666b20fc497475a2f10a7098cf2:src/TestBusqueda.cpp
 
             pos = test.busquedaBinaria(copia, elem);
             break;
