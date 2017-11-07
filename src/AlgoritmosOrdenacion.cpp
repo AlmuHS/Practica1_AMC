@@ -11,7 +11,7 @@ AlgoritmosOrdenacion::~AlgoritmosOrdenacion(void)
 {
 }
 
-void AlgoritmosOrdenacion::OrdenaBurbuja(vector<int> v)
+void AlgoritmosOrdenacion::OrdenaBurbuja(vector<int> &v)
 {
     int aux_elem;
 
@@ -30,7 +30,7 @@ void AlgoritmosOrdenacion::OrdenaBurbuja(vector<int> v)
     }//fin for i
 }
 
-void AlgoritmosOrdenacion::OrdenaInsercion(vector<int> v)
+void AlgoritmosOrdenacion::OrdenaInsercion(vector<int> &v)
 {
     int x, j, aux;
 
@@ -49,7 +49,7 @@ void AlgoritmosOrdenacion::OrdenaInsercion(vector<int> v)
     }
 }
 
-void AlgoritmosOrdenacion::OrdenaSeleccion(vector<int> v)
+void AlgoritmosOrdenacion::OrdenaSeleccion(vector<int> &v)
 {
     int posminimo = 0, aux;
 
@@ -69,7 +69,7 @@ void AlgoritmosOrdenacion::OrdenaSeleccion(vector<int> v)
 }
 
 
-void AlgoritmosOrdenacion::OrdenaShell(vector<int> v)
+void AlgoritmosOrdenacion::OrdenaShell(vector<int> &v)
 {
     for(int h = v.size() / 2; h > 0; h /= 2)
     {
@@ -92,7 +92,7 @@ void AlgoritmosOrdenacion::OrdenaShell(vector<int> v)
 
 
 
-void AlgoritmosOrdenacion::OrdenaHeapSort(vector<int> v)
+void AlgoritmosOrdenacion::OrdenaHeapSort(vector<int> &v)
 {
     priority_queue <int> pq;
 

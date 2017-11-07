@@ -17,6 +17,11 @@
 #include <fstream>
 #include <chrono>
 
+#include "AlgoritmosOrdenacion.h"
+#include "QuickSort.h"
+#include "MergeSort.h"
+#include "vector_ops.h"
+
 using namespace std;
 
 /* Constantes para indicar el metodo de ordenacion*/
@@ -44,7 +49,7 @@ public:
  * param metodo: Metodo de ordenacion a utilizar
  * return Tiempo empleado en la ordenación (en milisegundos)
  */
-	static double ordenarArrayDeInt(vector<int> v,int metodo);
+	static double ordenarArrayDeInt(vector<int> &v,int metodo);
 
 /*
  * Comprueba que los metodos de ordenación funcionan correctamente
@@ -65,8 +70,6 @@ public:
  * param metodo: metodo de ordenacion a estudiar.
  */
 	void casoMedio(int metodo);
-	void casoMejor(int metodo);
-	void casoPeor(int metodo);
 
 	void generar_grafica(string metodo);
 	void generar_grafica(string fichero1, string fichero2);

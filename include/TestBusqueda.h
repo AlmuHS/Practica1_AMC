@@ -3,6 +3,9 @@
 #include "Mtime.h"
 #include "AlgoritmosOrdenacion.h"
 #include "HashSearch.h"
+#include "vector_ops.h"
+
+
 #include <vector>
 #include <fstream>
 #include <chrono>
@@ -13,9 +16,7 @@ static const int BINARIA = 0;
 static const int SECUENCIAL = 1;
 static const int HASHCLOSED = 2;
 static const int HASHOPENED = 3;
-//static const int MEDIO = 0;
-//static const int MEJOR = 1;
-//static const int PEOR = 2;
+
 
 class TestBusqueda
 {

@@ -125,35 +125,31 @@ void TestBusqueda::comprobarMetodosBusqueda()
     AlgoritmosBusqueda test;
     AlgoritmosOrdenacion ordena;
     HashSearch testhash;
+    vector_ops vops;
 
     std::cout<<endl<<endl<<"Introduce la talla: ";
     std::cin>>talla;
 
     vector<int> v(talla);
+    vops.GenRandomVector(v);
 
     for (unsigned int metodo = 0; metodo < nombreAlgoritmo.size(); metodo++)
     {
-        int elem = v[talla];
-
-        vector<int> copia = v;
-
-        for(int i = 0; i < talla; i++)
-            copia[i] = v[i];
+        int elem = v[talla-1];
 
         cout <<endl<<endl<< "vector inicial para el metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
-        //Mostrar por pantalla
+        vops.ShowVector(v); //Mostrar por pantalla
 
+        vector<int> copia = v;
         switch(metodo)
         {
 
         case BINARIA:
             ordena.OrdenaHeapSort(copia);
+
             cout<<"\nvector ordenado: "<<endl<<endl;
+            vops.ShowVector(copia);
 
-            for(int j = 0; j < talla; j++)
-                cout<<copia[j]<<" ";
-
-            cout<<endl;
             pos = test.busquedaBinaria(copia, elem);
             break;
 
@@ -182,7 +178,7 @@ void TestBusqueda::comprobarMetodosBusqueda()
 void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
 {
     int tallaIni = 500,
-        tallaFin = 100000,
+        tallaFin = 50000,
         incTalla = 500;
     char opcion;
     double segundos1 = 0, segundos2 = 0, tiempo1, tiempo2;
@@ -190,12 +186,12 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
 
     met1 = nombreAlgoritmo[metodo1];
     met2 = nombreAlgoritmo[metodo2];
-    vector<double> tiempos1, tiempos2;
 
     cout<<"Talla\t\t"<<met1<<"\t\t"<<met2<<endl<<endl;
     met1+=".dat";
     met2+=".dat";
     ofstream fichero1(met1.c_str()), fichero2(met2.c_str());
+    vector_ops vops;
 
     for(int i = tallaIni; i <= tallaFin; i += incTalla)
     {
@@ -206,7 +202,7 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
 
         while(contador < NUMREPETICIONES)
         {
-            //v.GeneraVector();
+            vops.GenRandomVector(v);
             segundos1 += Buscar(v, metodo1, v[i/2]);
             segundos2 += Buscar(v, metodo2, v[i/2]);
             contador++;
@@ -217,19 +213,14 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
 
         cout<<i<<"\t\t"<<tiempo1<<"\t\t"<<tiempo2<<endl;
 
-        tiempos1.push_back(tiempo1);
-        tiempos2.push_back(tiempo2);
+        fichero1<<i<<"\t\t"<<tiempo1<<endl;
+        fichero2<<i<<"\t\t"<<tiempo2<<endl;
     }//fin for
 
     cout<<"\n\nGrabar los datos en ficheros? (s/n): ";
     cin>>opcion;
     if(opcion == 's')
     {
-        for(unsigned int j = 0; j < tiempos1.size(); j++)
-        {
-            fichero1<<500*j+500<<"\t\t"<<tiempos1[j]<<endl;
-            fichero2<<500*j+500<<"\t\t"<<tiempos2[j]<<endl;
-        }
         cout<<"\n\nDatos grabados en los ficheros "<<met1<<" y  "<<met2
             <<"\n\nGenerar grafica de resultados? (s/n): ";
         cin>>opcion;
@@ -239,40 +230,40 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
 
 void TestBusqueda::casoMedio(int metodo){
     int tallaIni = 500,
-        tallaFin = 100000,
+        tallaFin = 50000,
         incTalla = 500;
     char opcion;
     double segundos = 0, tiempo;
-    vector<double> tiempos;
     string nombre_fichero = nombreAlgoritmo[metodo] + ".dat";
     ofstream fichero(nombre_fichero.c_str());
+    vector_ops vops;
 
 	cout<<"Talla\t\t"<<"Tiempo\n\n";
-	for(int i=tallaIni; i<tallaFin; i+=incTalla){
-		//ConjuntoInt v(i);
+	for(int i = tallaIni; i < tallaFin; i += incTalla){
 		vector<int> v(i);
-		int contador=0;
-		segundos=0;
+		int contador = 0;
+		segundos = 0;
+
 		while(contador < NUMREPETICIONES){
-            //v.GeneraVector();
+            vops.GenRandomVector(v);
+
 			segundos += Buscar(v, metodo, v[i/4]);
 			contador++;
 		}
-		tiempo = segundos/NUMREPETICIONES;
+		tiempo = segundos / NUMREPETICIONES;
+
 		cout<<i<<"\t\t"<<tiempo<<endl;
-		tiempos.push_back(tiempo);
+		fichero<<i<<"\t\t"<<tiempo<<endl;
 	}//fin for
 
 	cout<<"\n\nGrabar los datos en el fichero "<<nombre_fichero<<" ? (s/n): ";
 	cin>>opcion;
-	if(opcion=='s'){
-        for(unsigned int j=0; j<tiempos.size(); j++){
-            fichero<<500*j+500<<"\t\t"<<tiempos[j]<<endl;
-        }
+
+	if(opcion == 's'){
         cout<<"\n\nDatos grabados en el fichero "<<nombre_fichero
             <<"\n\nGenerar grafica de resultados? (s/n): ";
         cin>>opcion;
-        if(opcion=='s') generar_grafica(nombre_fichero);
+        if(opcion == 's') generar_grafica(nombre_fichero);
 
         #ifdef __linux__
             system("clear");

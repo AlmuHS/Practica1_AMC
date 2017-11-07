@@ -268,12 +268,12 @@
 1509450776 /home/almu/Practica1_AMC/AlgoritmosBusqueda.h
 	<vector>
 
-1509450872 /home/almu/Practica1_AMC/AlgoritmosOrdenacion.h
+1510058951 /home/almu/Practica1_AMC/AlgoritmosOrdenacion.h
 	<algorithm>
 	<queue>
 	<vector>
 
-1509450459 source:/home/almu/Practica1_AMC/AlgoritmosOrdenacion.cpp
+1510058975 source:/home/almu/Practica1_AMC/AlgoritmosOrdenacion.cpp
 	"AlgoritmosOrdenacion.h"
 
 1508241806 source:/home/almu/Practica1_AMC/ConjuntoInt.cpp
@@ -299,12 +299,13 @@
 	"TestBusqueda.h"
 	"TestOrdenacion.h"
 
-1509455811 /home/almu/Practica1_AMC/TestBusqueda.h
+1510057718 /home/almu/Practica1_AMC/TestBusqueda.h
 	<vector>
 	"AlgoritmosBusqueda.h"
 	"Mtime.h"
 	"AlgoritmosOrdenacion.h"
 	"HashSearch.h"
+	"vector_ops.h"
 	<vector>
 	<fstream>
 	<chrono>
@@ -314,43 +315,44 @@
 	<ctime>
 	<windows.h>
 
-1509453271 /home/almu/Practica1_AMC/TestOrdenacion.h
+1510059195 /home/almu/Practica1_AMC/TestOrdenacion.h
 	<map>
 	<vector>
 	<string>
 	<iostream>
 	<fstream>
 	<chrono>
+	"AlgoritmosOrdenacion.h"
+	"QuickSort.h"
+	"MergeSort.h"
+	"vector_ops.h"
 
 1509455835 source:/home/almu/Practica1_AMC/Menu.cpp
 	"Menu.h"
 
-1509451508 source:/home/almu/Practica1_AMC/MergeSort.cpp
+1510060245 source:/home/almu/Practica1_AMC/MergeSort.cpp
 	"MergeSort.h"
 
-1509451488 /home/almu/Practica1_AMC/MergeSort.h
+1510060226 /home/almu/Practica1_AMC/MergeSort.h
 	<vector>
 
 1508241806 source:/home/almu/Practica1_AMC/Mtime.cpp
 	"Mtime.h"
 
-1509451582 source:/home/almu/Practica1_AMC/QuickSort.cpp
+1510060258 source:/home/almu/Practica1_AMC/QuickSort.cpp
 	"QuickSort.h"
 
-1509451559 /home/almu/Practica1_AMC/QuickSort.h
+1510060235 /home/almu/Practica1_AMC/QuickSort.h
 	<algorithm>
 	<vector>
 
-1509452853 source:/home/almu/Practica1_AMC/TestBusqueda.cpp
+1509455999 source:/home/almu/Practica1_AMC/TestBusqueda.cpp
 	"TestBusqueda.h"
 	"Mtime.h"
+	<iostream>
 
-1509454450 source:/home/almu/Practica1_AMC/TestOrdenacion.cpp
-	"AlgoritmosOrdenacion.h"
-	"QuickSort.h"
-	"MergeSort.h"
+1510074830 source:/home/almu/Practica1_AMC/TestOrdenacion.cpp
 	"TestOrdenacion.h"
-	"ConjuntoInt.h"
 	"Mtime.h"
 	<string>
 	<iomanip>
@@ -441,5 +443,13 @@
 	"Mtime.h"
 	<string>
 	<iomanip>
+	<iostream>
+
+1510058605 /home/almu/Practica1_AMC/include/vector_ops.h
+	<vector>
+
+1510058658 source:/home/almu/Practica1_AMC/src/vector_ops.cpp
+	"vector_ops.h"
+	<random>
 	<iostream>
 
