@@ -39,7 +39,7 @@ TestOrdenacion::~TestOrdenacion() {}
  */
 
 #if defined _WIN32 || defined _WIN64
-    double TestOrdenacion::ordenarArrayDeInt(vector<int> &v,int size,int metodo)
+    double TestOrdenacion::ordenarArrayDeInt(vector<int> &v, int metodo)
     {
         AlgoritmosOrdenacion estrategia;
         QuickSort QS;
@@ -53,25 +53,25 @@ TestOrdenacion::~TestOrdenacion() {}
         switch (metodo)
         {
         case BURBUJA:
-            estrategia.OrdenaBurbuja(v, size);
+            estrategia.OrdenaBurbuja(v);
             break;
         case INSERCION:
-            estrategia.OrdenaInsercion(v, size);
+            estrategia.OrdenaInsercion(v);
             break;
         case SELECCION:
-            estrategia.OrdenaSeleccion(v, size);
+            estrategia.OrdenaSeleccion(v);
             break;
         case SHELL:
-            estrategia.OrdenaShell(v, size);
+            estrategia.OrdenaShell(v);
             break;
         case HEAPSORT:
-            estrategia.OrdenaHeapSort(v, size);
+            estrategia.OrdenaHeapSort(v);
             break;
         case QUICKSORT:
-            QS.OrdenaQuickSort(v, size);
+            QS.OrdenaQuickSort(v);
             break;
         case MERGESORT:
-            MS.OrdenaMergesort(v,size);
+            MS.OrdenaMergesort(v);
             break;
 
         }
