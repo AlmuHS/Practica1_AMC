@@ -1,5 +1,21 @@
 #include "Menu.h"
 
+#if defined __unix__ || defined __linux__
+
+void Menu::clear(){
+    // CSI[2J clears screen, CSI[H moves the cursor to top-left corner
+    std::cout << "\x1B[2J\x1B[H";
+}
+
+#elif defined _WIN32 || defined _WIN64
+
+void Menu::clear(){
+    system("cls");
+}
+
+#endif
+
+
 void Menu::menu_principal(){
     do{
         cout<<"**** MENU PRINCIPAL ****\n\n"
@@ -9,12 +25,8 @@ void Menu::menu_principal(){
             <<"----------\n\n"
             <<"Elige opcion: ";
         cin>>opcion;
-        #if defined _WIN32 || defined _WIN64
-            system("cls");
-        #elif defined __linux__
-            system("clear");
-        #endif // defined
 
+        clear();
 
         switch(opcion){
             case 0:
@@ -42,11 +54,9 @@ void Menu::menu_ordenacion(){
         <<"---------\n\n"
         <<"Elige opcion: ";
     cin>>opcion;
-    #if defined _WIN32 || defined _WIN64
-        system("cls");
-    #elif defined __linux__
-        system("clear");
-    #endif // defined
+
+    clear();
+
     switch(opcion){
 
         case 1:
@@ -83,11 +93,7 @@ void Menu::menu_ordenacion(){
             cout<<"\nElige metodo 2: ";
             cin>>opcion2;
 
-            #if defined _WIN32 || defined _WIN64
-                system("cls");
-            #elif defined __linux__
-                 system("clear");
-            #endif // defined
+            clear();
             ordena.comparar(opcion, opcion2);
         break;
 
@@ -108,11 +114,8 @@ void Menu::menu_busquedas(){
         <<"---------\n\n"
         <<"Elige opcion: ";
     cin>>opcion;
-    #if defined _WIN32 || defined _WIN64
-        system("cls");
-    #elif defined __linux__
-        system("clear");
-    #endif // defined
+
+    clear();
 
 
     switch(opcion){
@@ -130,11 +133,8 @@ void Menu::menu_busquedas(){
                 <<"---------\n\n"
                 <<"Elige opcion: ";
             cin>>opcion;
-            #if defined _WIN32 || defined _WIN64
-                system("cls");
-            #elif defined __linux__
-                 system("clear");
-            #endif // defined
+
+            clear();
             buscar.casoMedio(opcion);
         break;
 
@@ -150,11 +150,7 @@ void Menu::menu_busquedas(){
             cout<<"\nElige metodo 2: ";
             cin>>opcion2;
 
-            #if defined _WIN32 || defined _WIN64
-                system("cls");
-            #elif defined __linux__
-                 system("clear");
-            #endif // defined
+            clear();
             buscar.comparar(opcion, opcion2);
         break;
 

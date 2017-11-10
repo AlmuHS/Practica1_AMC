@@ -7,6 +7,7 @@ class Menu
 {
     int opcion, opcion2;
     public:
+        void clear();
         void menu_principal();
         void menu_busquedas();
         void menu_ordenacion();
