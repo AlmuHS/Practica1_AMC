@@ -264,12 +264,6 @@ void TestBusqueda::casoMedio(int metodo){
             <<"\n\nGenerar grafica de resultados? (s/n): ";
         cin>>opcion;
         if(opcion == 's') generar_grafica(nombre_fichero);
-
-        #ifdef __linux__
-            system("clear");
-        #elif defined _WIN32 || defined _WIN64
-            system("cls");
-        #endif
 	}
 }
 
@@ -279,10 +273,6 @@ void TestBusqueda::generar_grafica(string metodo)
     string nom = "CmdMedio.plt";
 
     ofstream fout((char*)nom.c_str());
-
-#ifdef __linux__
-    fout<<"#!/usr/bin/gnuplot"<<endl;
-#endif
 
     fout << "set title \" Busqueda " << metodo << "\"" << endl;
     fout << "set key top left vertical inside" << endl;
@@ -317,20 +307,13 @@ void TestBusqueda::generar_grafica(string metodo)
     fout << "pause 10 \"Pulse Enter para continuar...\"" << endl;
 
     fout.close();
-#ifdef __linux__
-    system("chmod +x CmdMedio.plt");
-    system("./CmdMedio.plt");
-#elif defined _WIN32 || defined _WIN64
-    system("CmdMedio.plt");
-#endif
+
+    system("gnuplot CmdMedio.plt");
 }
 
 void TestBusqueda::generar_grafica(string fichero1, string fichero2)
 {
     ofstream graf("CmdCMP.plt");
-#if defined __linux__ || defined __unix__
-    graf<<"#!/usr/bin/gnuplot"<<endl;
-#endif
 
     graf << "set title \""<<"Comparacion tiempos entre " << fichero1 <<" y "<< fichero2 << "\"" << "\n";
     graf << "set key top left vertical inside\n";
@@ -345,10 +328,6 @@ void TestBusqueda::generar_grafica(string fichero1, string fichero2)
     graf << "replot" << endl;
     graf << "pause 10 \"Pulse Enter para continuar...\"" << endl;
     graf.close();
-#if defined __linux__ || defined __unix__
-    system("chmod +x CmdCMP.plt");
-    system("./CmdCMP.plt");
-#elif defined _WIN32 || defined _WIN64
-    system("CmdCMP.plt");
-#endif
+
+    system("gnuplot CmdCMP.plt");
 }
