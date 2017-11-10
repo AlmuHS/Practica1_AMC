@@ -3,6 +3,8 @@
 
 #include <unordered_map>
 #include <vector>
+#include <list>
+#include <algorithm>
 
 using namespace std;
 
@@ -10,7 +12,8 @@ using namespace std;
 class HashSearch
 {
     unordered_map<int, int> hash_closed;
-    unordered_multimap<int, int> hash_opened;
+    //unordered_multimap<int, int> hash_opened;
+    vector<list<int> > hash_opened;
 
     public:
         HashSearch();

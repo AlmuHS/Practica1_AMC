@@ -159,12 +159,12 @@ void TestBusqueda::comprobarMetodosBusqueda()
 
         case HASHCLOSED:
             testhash.add_element_closed(v);
-            testhash.search_element_closed(elem);
+            pos = testhash.search_element_closed(elem);
             break;
 
         case HASHOPENED:
             testhash.add_element_opened(v);
-            testhash.search_element_opened(elem);
+            pos = testhash.search_element_opened(elem);
             break;
         }
         cout<<endl<<endl<<"Busqueda con metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
