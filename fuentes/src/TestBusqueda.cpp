@@ -77,35 +77,36 @@ double TestBusqueda::Buscar(vector<int> v, int metodo, int key)
     HashSearch testhash;
 
     duration<double> interval;
-    high_resolution_clock::time_point t_ini, t_fin;
+    //high_resolution_clock::time_point t_ini, t_fin;
+    std::chrono::time_point<std::chrono::steady_clock> t_ini, t_fin;
 
     switch(metodo)
     {
     case BINARIA:
         ordenar.OrdenaHeapSort(v);
-        t_ini = high_resolution_clock::now();
+        t_ini = std::chrono::steady_clock::now();
         test.busquedaBinaria(v, key);
-        t_fin = high_resolution_clock::now();
+        t_fin = std::chrono::steady_clock::now();
         break;
 
     case SECUENCIAL:
-        t_ini = high_resolution_clock::now();
+        t_ini = std::chrono::steady_clock::now();
         test.busquedaSecuencial(v, key);
-        t_fin = high_resolution_clock::now();
+        t_fin = std::chrono::steady_clock::now();
         break;
 
     case HASHCLOSED:
         testhash.add_element_closed(v);
-        t_ini = high_resolution_clock::now();
+        t_ini = std::chrono::steady_clock::now();
         testhash.search_element_closed(key);
-        t_fin = high_resolution_clock::now();
+        t_fin = std::chrono::steady_clock::now();
         break;
 
     case HASHOPENED:
         testhash.add_element_opened(v);
-        t_ini = high_resolution_clock::now();
+        t_ini = std::chrono::steady_clock::now();
         testhash.search_element_opened(key);
-        t_fin = high_resolution_clock::now();
+        t_fin = std::chrono::steady_clock::now();
         break;
     }
 
