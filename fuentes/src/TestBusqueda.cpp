@@ -61,7 +61,7 @@ double TestBusqueda::Buscar(vector<int> v, int metodo, int key)
         break;
 
     }
-    segundos=counter.performancecounter_diff(&t_fin, &t_ini)*1000000;
+    segundos = counter.performancecounter_diff(&t_fin, &t_ini)*1000000;
 
     return segundos;
 }
@@ -308,7 +308,11 @@ void TestBusqueda::generar_grafica(string metodo)
 
     fout.close();
 
-    system("gnuplot CmdMedio.plt");
+    #if defined __linux__ || defined __unix__
+        system("gnuplot CmdMedio.plt");
+    #elif defined _WIN32 || defined _WIN64
+        system("CmdMedio.plt");
+    #endif
 }
 
 void TestBusqueda::generar_grafica(string fichero1, string fichero2)
@@ -329,5 +333,10 @@ void TestBusqueda::generar_grafica(string fichero1, string fichero2)
     graf << "pause 10 \"Pulse Enter para continuar...\"" << endl;
     graf.close();
 
-    system("gnuplot CmdCMP.plt");
+    #if defined __linux__ || defined __unix__
+        system("gnuplot CmdCMP.plt");
+    #elif defined _WIN32 || defined _WIN64
+        system("CmdCMP.plt");
+    #endif // defined
+
 }
