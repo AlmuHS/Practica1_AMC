@@ -21,7 +21,7 @@ TestBusqueda::~TestBusqueda(void)
 
 #if defined _WIN32 || defined _WIN64
 
-double TestBusqueda::Buscar(vector<int> v, int size, int metodo, int key)
+double TestBusqueda::Buscar(vector<int> v, int metodo, int key)
 {
     AlgoritmosBusqueda test;
     double segundos = 0;
