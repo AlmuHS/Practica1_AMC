@@ -1,0 +1,68 @@
+
+
+*******************************************************************************
+Fri Nov 10 09:57:58 2017
+
+
+FIT:    data read from "Heapsort.dat" using 1:2
+        format = x:z
+        #datapoints = 19
+        residuals are weighted equally (unit weight)
+
+function used for fitting: quick(x)
+	quick(x) = a*x*log(x)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 4.7673494955e+10   0.00e+00  5.05e+04    1.000000e+00
+   4 2.1253767949e+03  -4.29e-08  5.05e+00    7.996406e-03
+
+After 4 iterations the fit converged.
+final sum of squares of residuals : 2125.38
+rel. change during last iteration : -4.29419e-13
+
+degrees of freedom    (FIT_NDF)                        : 18
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 10.8663
+variance of residuals (reduced chisquare) = WSSR/ndf   : 118.076
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.00799641       +/- 4.937e-05    (0.6174%)
+
+
+*******************************************************************************
+Fri Nov 10 10:04:47 2017
+
+
+FIT:    data read from "Hash Cerrada.dat" using 1:2
+        format = x:z
+        #datapoints = 99
+        residuals are weighted equally (unit weight)
+
+function used for fitting: quick(x)
+	quick(x) = a + b + c
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 2.4562348690e+06   0.00e+00  1.00e+00    1.000000e+00   1.000000e+00   1.000000e+00
+   3 4.3269128196e+04  -7.12e-08  1.00e-03    5.303993e+01   5.303993e+01   5.303993e+01
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 43269.1
+rel. change during last iteration : -7.11804e-13
+
+degrees of freedom    (FIT_NDF)                        : 96
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 21.2302
+variance of residuals (reduced chisquare) = WSSR/ndf   : 450.72
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 53.0399          +/- 5.337e+15    (1.006e+16%)
+b               = 53.0399          +/- 1.262e+16    (2.38e+16%)
+c               = 53.0399          +/- 1.684e+16    (3.175e+16%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b               0.711  1.000 
+c              -0.850 -0.975  1.000 

@@ -290,6 +290,7 @@ void TestBusqueda::generar_grafica(string metodo)
     fout << "set xlabel \"Talla (n)\"" << endl;
     fout << "set ylabel \"Tiempo (ms)\"" << endl;
     fout << "plot \"" << metodo << "\" using 1:2 with lines" << endl;
+
     if(metodo=="Secuencial.dat")
     {
         fout << "InsDir(x) = a + b*x" << endl;

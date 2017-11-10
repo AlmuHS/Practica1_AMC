@@ -8,9 +8,20 @@ void Menu::clear(){
 }
 
 #elif defined _WIN32 || defined _WIN64
+#include <windows.h>
 
 void Menu::clear(){
-    system("cls");
+    //system("cls");
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    COORD coord = {0, 0};
+    DWORD count;
+
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(hStdOut, &csbi);
+
+    FillConsoleOutputCharacter(hStdOut, ' ', csbi.dwSize.X * csbi.dwSize.Y, coord, &count);
+
+    SetConsoleCursorPosition(hStdOut, coord);
 }
 
 #endif
