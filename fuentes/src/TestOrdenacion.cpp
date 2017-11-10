@@ -48,34 +48,52 @@ TestOrdenacion::~TestOrdenacion() {}
 
         Mtime t;
         LARGE_INTEGER t_inicial, t_final;
-        QueryPerformanceCounter(&t_inicial);
+        //QueryPerformanceCounter(&t_inicial);
         /* Invoca al método de ordenación elegido */
         switch (metodo)
         {
         case BURBUJA:
+            QueryPerformanceCounter(&t_inicial);
             estrategia.OrdenaBurbuja(v);
-            break;
-        case INSERCION:
-            estrategia.OrdenaInsercion(v);
-            break;
-        case SELECCION:
-            estrategia.OrdenaSeleccion(v);
-            break;
-        case SHELL:
-            estrategia.OrdenaShell(v);
-            break;
-        case HEAPSORT:
-            estrategia.OrdenaHeapSort(v);
-            break;
-        case QUICKSORT:
-            QS.OrdenaQuickSort(v);
-            break;
-        case MERGESORT:
-            MS.OrdenaMergesort(v);
+            QueryPerformanceCounter(&t_final);
             break;
 
+        case INSERCION:
+            QueryPerformanceCounter(&t_inicial);
+            estrategia.OrdenaInsercion(v);
+            QueryPerformanceCounter(&t_final);
+            break;
+
+        case SELECCION:
+            QueryPerformanceCounter(&t_inicial);
+            estrategia.OrdenaSeleccion(v);
+            QueryPerformanceCounter(&t_final);
+            break;
+
+        case SHELL:
+            QueryPerformanceCounter(&t_inicial);
+            estrategia.OrdenaShell(v);
+            QueryPerformanceCounter(&t_final);
+            break;
+
+        case HEAPSORT:
+            QueryPerformanceCounter(&t_inicial);
+            estrategia.OrdenaHeapSort(v);
+            QueryPerformanceCounter(&t_final);
+            break;
+
+        case QUICKSORT:
+            QueryPerformanceCounter(&t_inicial);
+            QS.OrdenaQuickSort(v);
+            QueryPerformanceCounter(&t_final);
+            break;
+
+        case MERGESORT:
+            QueryPerformanceCounter(&t_inicial);
+            MS.OrdenaMergesort(v);
+            QueryPerformanceCounter(&t_final);
+            break;
         }
-        QueryPerformanceCounter(&t_final);
         tiempo = t.performancecounter_diff(&t_final, &t_inicial) * 1000;
 
         return tiempo;
