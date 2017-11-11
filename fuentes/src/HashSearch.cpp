@@ -22,11 +22,18 @@ void HashSearch::add_element_opened(vector<int> v)
     }
 }
 
+
+int HashSearch::closed_hash(int intempts, int key, int size){
+    if (intempts < 1) return (1 + key % (size - 2) );
+    else
+        return (closed_hash(intempts - 1, key, size) + closed_hash(0, key, size)) % size;
+}
+
 void HashSearch::add_element_closed(vector<int> v)
 {
     hash_closed.assign(v.size(), -1);
     int pos = 0;
-    int max_intentos = 4;
+    int max_intentos = v.size()/2;
 
     for(int i = 0; i < v.size(); i++)
     {
@@ -35,19 +42,20 @@ void HashSearch::add_element_closed(vector<int> v)
 
         //Si la posicion esta ocupada, se recalcula la hash a partir del numero de intentos realizados
         while(intentos < max_intentos && !vacia){
-            pos = trunc(v.size() * (float(v[i])* inv_aurea - trunc(v[i] * inv_aurea) - 1/intentos ) );
+            pos = trunc(v.size() * (v[i]* inv_aurea * intentos - trunc(v[i] * inv_aurea * intentos) ) );
+            //pos = closed_hash(intentos, v[i], v.size());
 
             if(hash_closed[pos] == -1) vacia = true;
-            intentos++;
+            else intentos++;
         }//Fin while
 
         if(vacia) hash_closed[pos] = v[i];
 
         else if(intentos == max_intentos){
-            pos = v.size() - 1;
-            while(hash_closed[pos] != -1) pos--;
+            pos = 0;
+            while(hash_closed[pos] != -1) pos++;
 
-            if(pos >= 0) hash_closed[pos] = v[i];
+            if(pos < hash_closed.size()) hash_closed[pos] = v[i];
         }
     }
 }
@@ -61,7 +69,6 @@ int HashSearch::search_element_opened(int key)
         std::list<int>::const_iterator it = hash_opened.at(pos).begin();
 
         while(*it != key && it != hash_opened[pos].end()) it++;
-        //std::list<int>::const_iterator it = std::find(begin(hash_opened[pos]), end(hash_opened[pos]), key);
 
         if(it != hash_opened[pos].end()) return pos;
     }
@@ -74,11 +81,11 @@ int HashSearch::search_element_closed(int key)
 
     int pos = key % hash_closed.size();
     int intentos = 1;
-    int max_intentos = 4;
+    int max_intentos = hash_closed.size()/2;
 
     while(hash_closed[pos] != key && intentos < max_intentos){
-        pos = trunc(hash_closed.size() * (float(key)* inv_aurea - trunc(key * inv_aurea) - 1/intentos ) );
-
+        pos = trunc(hash_closed.size() * (key * inv_aurea * intentos - trunc(key * inv_aurea * intentos) ) );
+        //pos = closed_hash(intentos, key, hash_closed.size());
         intentos++;
     }
     if(hash_closed[pos] == key) return pos;
