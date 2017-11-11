@@ -12,8 +12,6 @@ using namespace std;
 
 class HashSearch
 {
-    //unordered_map<int, int> hash_closed;
-    //unordered_multimap<int, int> hash_opened;
     vector<list<int> > hash_opened;
     vector<int> hash_closed;
 
@@ -24,6 +22,7 @@ class HashSearch
 
         void add_element_closed(vector<int> v);
 
+        int closed_hash(int intempts, int key, int size);
 
         void pop_element(vector<int> v);
 
