@@ -14,14 +14,15 @@
 1510171322 source:/home/almu/Practica1_AMC/fuentes/src/AlgoritmosOrdenacion.cpp
 	"AlgoritmosOrdenacion.h"
 
-1510351793 source:/home/almu/Practica1_AMC/fuentes/src/HashSearch.cpp
+1510357105 source:/home/almu/Practica1_AMC/fuentes/src/HashSearch.cpp
 	"HashSearch.h"
 
-1510351450 /home/almu/Practica1_AMC/fuentes/include/HashSearch.h
+1510357691 /home/almu/Practica1_AMC/fuentes/include/HashSearch.h
 	<unordered_map>
 	<vector>
 	<list>
 	<algorithm>
+	<array>
 
 1510171322 source:/home/almu/Practica1_AMC/fuentes/src/main.cpp
 	<iostream>

@@ -180,3 +180,41 @@ correlation matrix of the fit parameters:
 a               1.000 
 b              -0.718  1.000 
 c               0.369 -0.912  1.000 
+
+
+*******************************************************************************
+Fri Nov 10 23:44:37 2017
+
+
+FIT:    data read from "Hash Abierta.dat" using 1:2
+        format = x:z
+        #datapoints = 99
+        residuals are weighted equally (unit weight)
+
+function used for fitting: quick(x)
+	quick(x) = a + b + c
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 9.7673433473e+07   0.00e+00  1.00e+00    1.000000e+00   1.000000e+00   1.000000e+00
+   3 1.6171396312e+06  -7.58e-08  1.00e-03    3.293402e+02   3.293402e+02   3.293402e+02
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 1.61714e+06
+rel. change during last iteration : -7.58182e-13
+
+degrees of freedom    (FIT_NDF)                        : 96
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 129.789
+variance of residuals (reduced chisquare) = WSSR/ndf   : 16845.2
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 329.34           +/- 2.167e+16    (6.58e+15%)
+b               = 329.34           +/- 5.092e+16    (1.546e+16%)
+c               = 329.34           +/- 3.938e+16    (1.196e+16%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b              -0.685  1.000 
+c               0.335 -0.916  1.000 

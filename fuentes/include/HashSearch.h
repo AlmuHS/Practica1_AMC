@@ -5,15 +5,17 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <array>
 
 using namespace std;
 
 
 class HashSearch
 {
-    unordered_map<int, int> hash_closed;
+    //unordered_map<int, int> hash_closed;
     //unordered_multimap<int, int> hash_opened;
     vector<list<int> > hash_opened;
+    vector<int> hash_closed;
 
     public:
         HashSearch();

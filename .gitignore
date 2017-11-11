@@ -4,3 +4,6 @@ obj/
 
 # LibreOffice locks
 .~lock.*#
+
+.png
+.dat
