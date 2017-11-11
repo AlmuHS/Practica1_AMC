@@ -1,6 +1,10 @@
 #include "HashSearch.h"
+#include <cmath>
+#include <iostream>
 
 using namespace std;
+
+const float inv_aurea = 2/(1 + sqrt(5));
 
 HashSearch::HashSearch()
 {
@@ -22,16 +26,16 @@ void HashSearch::add_element_closed(vector<int> v)
 {
     hash_closed.assign(v.size(), -1);
     int pos = 0;
+    int max_intentos = 4;
 
     for(int i = 0; i < v.size(); i++)
     {
-        //hash_closed.emplace(v[i], i);
         bool vacia = false;
         int intentos = 1;
 
         //Si la posicion esta ocupada, se recalcula la hash a partir del numero de intentos realizados
-        while(intentos < 3 && !vacia){
-            pos = (v[i] % v.size()) / intentos;
+        while(intentos < max_intentos && !vacia){
+            pos = trunc(v.size() * (float(v[i])* inv_aurea - trunc(v[i] * inv_aurea) - 1/intentos ) );
 
             if(hash_closed[pos] == -1) vacia = true;
             intentos++;
@@ -39,12 +43,11 @@ void HashSearch::add_element_closed(vector<int> v)
 
         if(vacia) hash_closed[pos] = v[i];
 
-        //Si despues de 3 intentos, no se ha logrado alojar, se hace una busqueda lineal del primer elemento vacío
-        else if(intentos == 3){
-            pos = 0;
-            while(hash_closed[pos] != -1) pos++;
+        else if(intentos == max_intentos){
+            pos = v.size() - 1;
+            while(hash_closed[pos] != -1) pos--;
 
-            if(pos < v.size()) hash_closed[pos] = v[i];
+            if(pos >= 0) hash_closed[pos] = v[i];
         }
     }
 }
@@ -68,18 +71,19 @@ int HashSearch::search_element_opened(int key)
 
 int HashSearch::search_element_closed(int key)
 {
-    //unordered_map<int, int>::iterator it;
-    //it = hash_closed.find(key);
+
     int pos = key % hash_closed.size();
     int intentos = 1;
+    int max_intentos = 4;
 
-    while(hash_closed[pos] != key && intentos < 3){
-        pos = (key % hash_closed.size()) / intentos;
+    while(hash_closed[pos] != key && intentos < max_intentos){
+        pos = trunc(hash_closed.size() * (float(key)* inv_aurea - trunc(key * inv_aurea) - 1/intentos ) );
+
         intentos++;
     }
     if(hash_closed[pos] == key) return pos;
 
-    else if(intentos == 3){
+    else if(intentos == max_intentos){
         std::vector<int>::iterator it = std::find(begin(hash_closed), end(hash_closed), key);
 
         if(it != hash_closed.end()) return pos;
