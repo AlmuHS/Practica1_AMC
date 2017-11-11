@@ -33,7 +33,7 @@ void HashSearch::add_element_closed(vector<int> v)
         while(intentos < 3 && !vacia){
             pos = (v[i] % v.size()) / intentos;
 
-            if(hash_closed[pos] != -1) vacia = true;
+            if(hash_closed[pos] == -1) vacia = true;
             intentos++;
         }//Fin while
 
@@ -42,7 +42,7 @@ void HashSearch::add_element_closed(vector<int> v)
         //Si despues de 3 intentos, no se ha logrado alojar, se hace una busqueda lineal del primer elemento vacío
         else if(intentos == 3){
             pos = 0;
-            while(hash_closed[pos] == -1) pos++;
+            while(hash_closed[pos] != -1) pos++;
 
             if(pos < v.size()) hash_closed[pos] = v[i];
         }
