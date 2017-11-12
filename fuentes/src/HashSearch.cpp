@@ -14,10 +14,12 @@ HashSearch::HashSearch()
 void HashSearch::add_element_opened(vector<int> v)
 {
     hash_opened.assign(v.size(), list<int>());
+    int pos = 0;
 
     for(int i = 0; i < v.size(); i++)
     {
-        int pos = v[i] % v.size();
+        //int pos = v[i] % v.size();
+        pos = trunc(v.size() * (v[i]* inv_aurea - trunc(v[i] * inv_aurea) ) );
 
         hash_opened[pos].push_back(v[i]);
     }
@@ -38,7 +40,7 @@ void HashSearch::add_element_closed(vector<int> v)
 
         while(!vacia){
 
-            if(intentos < v.size()/2)
+            if(intentos < v.size()/4 + 3)
                 pos = trunc(v.size() * (v[i]* inv_aurea * intentos - trunc(v[i] * inv_aurea * intentos) ) );
 
             else pos = (v[i] + intentos) % v.size();
@@ -54,7 +56,8 @@ void HashSearch::add_element_closed(vector<int> v)
 
 int HashSearch::search_element_opened(int key)
 {
-    int pos = key % hash_opened.size();
+    //int pos = key % hash_opened.size();
+    int pos = trunc(hash_closed.size() * (key * inv_aurea - trunc(key * inv_aurea) ) );
 
     if(!hash_opened.at(pos).empty()){
 
@@ -76,7 +79,7 @@ int HashSearch::search_element_closed(int key)
 
     while(hash_closed[pos] != key){
 
-        if(intentos < hash_closed.size()/2)
+        if(intentos < hash_closed.size()/4 + 3)
             pos = trunc(hash_closed.size() * (key * inv_aurea * intentos - trunc(key * inv_aurea * intentos) ) );
 
         else pos = (key + intentos) % hash_closed.size();
