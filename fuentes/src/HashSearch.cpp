@@ -1,6 +1,5 @@
 #include "HashSearch.h"
 #include <cmath>
-#include <iostream>
 
 using namespace std;
 
@@ -28,11 +27,13 @@ void HashSearch::add_element_opened(vector<int> v)
 void HashSearch::add_element_closed(vector<int> v)
 {
     int pos = 0;
+    AlgoritmosBusqueda buscar;
 
     bool vacia = false;
     int intentos = 1;
     int tam = v.size();
-    int max_intentos = tam/4 + 3;
+    int max_intentos = tam/4 + 3; //Limite para cambiar de funcion hash
+    int top_intentos = 4 * tam; //Limite para busqueda secuencial
 
     hash_closed.assign(tam, -1);
 
@@ -41,7 +42,7 @@ void HashSearch::add_element_closed(vector<int> v)
         vacia = false;
         intentos = 1;
 
-        while(!vacia){
+        while(!vacia && intentos < top_intentos){
 
             if(intentos < max_intentos)
                 pos = trunc(tam * (v[i]* inv_aurea * intentos - trunc(v[i] * inv_aurea * intentos) ) );
@@ -53,6 +54,11 @@ void HashSearch::add_element_closed(vector<int> v)
         }
 
         if(vacia) hash_closed[pos] = v[i];
+
+        else if(intentos == top_intentos){
+            pos = buscar.busquedaSecuencial(hash_closed, -1);
+            hash_closed[pos] = v[i];
+        }
 
     }
 }
@@ -76,13 +82,15 @@ int HashSearch::search_element_opened(int key)
 
 int HashSearch::search_element_closed(int key)
 {
+    AlgoritmosBusqueda buscar;
     int intentos = 1;
     int tam = hash_closed.size();
     int max_intentos = tam/4 + 3;
+    int top_intentos = 4 * tam;
 
     int pos = trunc(tam * (key * inv_aurea - trunc(key * inv_aurea) ));
 
-    while(hash_closed[pos] != key){
+    while(hash_closed[pos] != key && intentos < top_intentos){
 
         if(intentos < max_intentos)
             pos = trunc(tam * (key * inv_aurea * intentos - trunc(key * inv_aurea * intentos) ) );
@@ -92,8 +100,7 @@ int HashSearch::search_element_closed(int key)
     }
 
     if(hash_closed[pos] == key) return pos;
-
-    return -1;
+    else if(intentos == top_intentos) return buscar.busquedaSecuencial(hash_closed, key);
 }
 
 
