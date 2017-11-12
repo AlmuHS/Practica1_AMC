@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const float inv_aurea = 2/(1 + sqrt(5));
+constexpr float inv_aurea = 2/(1 + sqrt(5));
 
 HashSearch::HashSearch()
 {
@@ -15,10 +15,11 @@ void HashSearch::add_element_opened(vector<int> v)
 {
     hash_opened.assign(v.size(), list<int>());
     int pos = 0;
+    int tam = v.size();
 
-    for(int i = 0; i < v.size(); i++)
+    for(int i = 0; i < tam; i++)
     {
-        pos = trunc(v.size() * (v[i]* inv_aurea - trunc(v[i] * inv_aurea) ) );
+        pos = trunc(tam * (v[i]* inv_aurea - trunc(v[i] * inv_aurea) ) );
 
         hash_opened[pos].push_back(v[i]);
     }
@@ -26,23 +27,26 @@ void HashSearch::add_element_opened(vector<int> v)
 
 void HashSearch::add_element_closed(vector<int> v)
 {
-    hash_closed.assign(v.size(), -1);
     int pos = 0;
 
     bool vacia = false;
     int intentos = 1;
+    int tam = v.size();
+    int max_intentos = tam/4 + 3;
 
-    for(int i = 0; i < v.size(); i++)
+    hash_closed.assign(tam, -1);
+
+    for(int i = 0; i < tam; i++)
     {
         vacia = false;
         intentos = 1;
 
         while(!vacia){
 
-            if(intentos < v.size()/4 + 3)
-                pos = trunc(v.size() * (v[i]* inv_aurea * intentos - trunc(v[i] * inv_aurea * intentos) ) );
+            if(intentos < max_intentos)
+                pos = trunc(tam * (v[i]* inv_aurea * intentos - trunc(v[i] * inv_aurea * intentos) ) );
 
-            else pos = (v[i] + intentos) % v.size();
+            else pos = (v[i] + intentos) % tam;
 
             if(hash_closed[pos] == -1) vacia = true;
             intentos++;
@@ -55,8 +59,8 @@ void HashSearch::add_element_closed(vector<int> v)
 
 int HashSearch::search_element_opened(int key)
 {
-    //int pos = key % hash_opened.size();
-    int pos = trunc(hash_opened.size() * (key * inv_aurea - trunc(key * inv_aurea) ) );
+    int tam = hash_opened.size();
+    int pos = trunc(tam * (key * inv_aurea - trunc(key * inv_aurea) ) );
 
     if(!hash_opened.at(pos).empty()){
 
@@ -73,13 +77,15 @@ int HashSearch::search_element_opened(int key)
 int HashSearch::search_element_closed(int key)
 {
     int intentos = 1;
+    int tam = hash_closed.size();
+    int max_intentos = tam/4 + 3;
 
-    int pos = trunc(hash_closed.size() * (key * inv_aurea - trunc(key * inv_aurea) ));
+    int pos = trunc(tam * (key * inv_aurea - trunc(key * inv_aurea) ));
 
     while(hash_closed[pos] != key){
 
-        if(intentos < hash_closed.size()/4 + 3)
-            pos = trunc(hash_closed.size() * (key * inv_aurea * intentos - trunc(key * inv_aurea * intentos) ) );
+        if(intentos < max_intentos)
+            pos = trunc(tam * (key * inv_aurea * intentos - trunc(key * inv_aurea * intentos) ) );
 
         else pos = (key + intentos) % hash_closed.size();
         intentos++;
