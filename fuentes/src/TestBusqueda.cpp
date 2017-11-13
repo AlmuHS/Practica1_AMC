@@ -230,7 +230,7 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
 
 void TestBusqueda::casoMedio(int metodo){
     int tallaIni = 500,
-        tallaFin = 15000,
+        tallaFin = 50000,
         incTalla = 500;
     char opcion;
     double segundos = 0, tiempo;

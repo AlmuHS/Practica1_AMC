@@ -14,12 +14,12 @@ void MergeSort::OrdenaMergesort(std::vector<int> &v, int e, int d){
 }
 
 void MergeSort::Merge(std::vector<int> &v, int e, int m, int d){
-    int B[d-e+1];
+    std::vector<int> B(d-e+1);
     int i = e;
     int j = m+1;
     int k = 0;
 
-    while(i<=m and j<=d){
+    while(i<=m && j<=d){
         if(v[i] <= v[j])
             B[k++] = v[i++];
         else
