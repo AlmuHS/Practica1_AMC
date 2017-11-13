@@ -7,8 +7,6 @@
 #include <algorithm>
 #include <array>
 
-#include "AlgoritmosBusqueda.h"
-
 using namespace std;
 
 
@@ -20,9 +18,9 @@ class HashSearch
     public:
         HashSearch();
 
-        void add_element_opened(vector<int> v);
+        void add_element_opened(vector<int> &v);
 
-        void add_element_closed(vector<int> v);
+        void add_element_closed(vector<int> &v);
 
         int closed_hash(int intempts, int key, int size);
 
