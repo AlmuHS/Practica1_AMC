@@ -1,5 +1,7 @@
 #include <vector>
 
+#ifndef ALGORITMOSBUSQUEDA_
+#define ALGORITMOSBUSQUEDA_
 
 class AlgoritmosBusqueda
 {
@@ -26,3 +28,4 @@ public:
 
 };
 
+#endif

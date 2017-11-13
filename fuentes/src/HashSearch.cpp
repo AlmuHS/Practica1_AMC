@@ -32,8 +32,8 @@ void HashSearch::add_element_closed(vector<int> v)
     bool vacia = false;
     int intentos = 1;
     int tam = v.size();
-    int max_intentos = tam/4 + 3; //Limite para cambiar de funcion hash
-    int top_intentos = 4 * tam; //Limite para busqueda secuencial
+    int max_intentos = tam/2; //Limite para cambiar de funcion hash
+    int top_intentos = 2 * tam; //Limite para busqueda secuencial
 
     hash_closed.assign(tam, -1);
 
@@ -50,7 +50,15 @@ void HashSearch::add_element_closed(vector<int> v)
             else pos = (v[i] + intentos) % tam;
 
             if(hash_closed[pos] == -1) vacia = true;
-            intentos++;
+            else if(pos < tam-1 && hash_closed[pos+1] == -1){
+                vacia = true;
+                pos++;
+            }
+            else if(pos > 0 && hash_closed[pos-1] == -1){
+                vacia = true;
+                pos--;
+            }
+            else intentos++;
         }
 
         if(vacia) hash_closed[pos] = v[i];
@@ -85,8 +93,8 @@ int HashSearch::search_element_closed(int key)
     AlgoritmosBusqueda buscar;
     int intentos = 1;
     int tam = hash_closed.size();
-    int max_intentos = tam/4 + 3;
-    int top_intentos = 4 * tam;
+    int max_intentos = tam/2;
+    int top_intentos = 2 * tam;
 
     int pos = trunc(tam * (key * inv_aurea - trunc(key * inv_aurea) ));
 
@@ -96,11 +104,15 @@ int HashSearch::search_element_closed(int key)
             pos = trunc(tam * (key * inv_aurea * intentos - trunc(key * inv_aurea * intentos) ) );
 
         else pos = (key + intentos) % hash_closed.size();
+
+        if(hash_closed[pos] == key) return pos;
+        else if(pos < tam-1 && hash_closed[pos+1] == key)  return pos+1;
+        else if(pos > 0 && hash_closed[pos-1] == key)   return pos-1;
+
         intentos++;
     }
 
-    if(hash_closed[pos] == key) return pos;
-    else if(intentos == top_intentos) return buscar.busquedaSecuencial(hash_closed, key);
+    if(intentos == top_intentos) return buscar.busquedaSecuencial(hash_closed, key);
 }
 
 

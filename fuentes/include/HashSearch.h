@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <array>
 
+#include "AlgoritmosBusqueda.h"
+
 using namespace std;
 
 
