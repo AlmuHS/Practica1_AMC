@@ -1,11 +1,9 @@
 #ifndef HASHSEARCH_H
 #define HASHSEARCH_H
 
-#include <unordered_map>
 #include <vector>
 #include <list>
 #include <algorithm>
-#include <array>
 
 using namespace std;
 
