@@ -102,6 +102,9 @@ void HashSearch::add_element_closed(vector<int> &v)
 
         //Si se ha encontrado una posicion vacia, asigna el valor a dicha posicion
         if(vacia) hash_closed[pos] = v[i];
+
+        //Si la tabla esta llena, interrumpe la ejecucion
+        else break;
     }
 }
 
