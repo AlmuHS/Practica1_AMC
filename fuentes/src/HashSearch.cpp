@@ -189,4 +189,24 @@ int HashSearch::search_element_closed(int key)
     return -1;
 }
 
+void HashSearch::show_closed_table(){
+    vector_ops vops;
+
+    vops.ShowVector(hash_closed);
+}
+
+void HashSearch::show_opened_table(){
+    vector_ops vops;
+
+    for(int i = 0; i < hash_opened.size(); i++){
+
+            cout<<"Posicion "<<i<<": ";
+            for(std::list<int>::const_iterator it = hash_opened[i].begin(); it != hash_opened[i].end(); it++){
+                std::cout<<*it<<"\t";
+            }
+
+            cout<<endl;
+    }
+}
+
 

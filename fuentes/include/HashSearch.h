@@ -4,6 +4,9 @@
 #include <vector>
 #include <list>
 #include <algorithm>
+#include <iostream>
+
+#include "vector_ops.h"
 
 using namespace std;
 
@@ -27,6 +30,10 @@ class HashSearch
         int search_element_opened(int key);
 
         int search_element_closed(int key);
+
+        void show_closed_table();
+
+        void show_opened_table();
 
 };
 
