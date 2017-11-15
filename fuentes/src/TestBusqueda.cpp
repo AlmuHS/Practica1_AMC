@@ -3,8 +3,8 @@
 #include "Mtime.h"
 #include <iostream>
 
-using namespace std;
-using namespace std::chrono;
+//using namespace std;
+//using namespace std::chrono;
 
 TestBusqueda::TestBusqueda(void)
 {
@@ -21,7 +21,7 @@ TestBusqueda::~TestBusqueda(void)
 
 #if defined _WIN32 || defined _WIN64
 
-double TestBusqueda::Buscar(vector<int> v, int metodo, int key)
+double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
 {
     AlgoritmosBusqueda test;
     double segundos = 0;
@@ -69,47 +69,47 @@ double TestBusqueda::Buscar(vector<int> v, int metodo, int key)
 #elif defined __linux__ || defined __unix__
 
 
-double TestBusqueda::Buscar(vector<int> v, int metodo, int key)
+double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
 {
     AlgoritmosBusqueda test;
     double segundos = 0;
     AlgoritmosOrdenacion ordenar;
     HashSearch testhash;
 
-    duration<double> interval;
-    high_resolution_clock::time_point t_ini, t_fin;
+    std::chrono::duration<double> interval;
+    std::chrono::high_resolution_clock::time_point t_ini, t_fin;
 
     switch(metodo)
     {
     case BINARIA:
         ordenar.OrdenaHeapSort(v);
-        t_ini = high_resolution_clock::now();
+        t_ini = std::chrono::high_resolution_clock::now();
         test.busquedaBinaria(v, key);
-        t_fin = high_resolution_clock::now();
+        t_fin = std::chrono::high_resolution_clock::now();
         break;
 
     case SECUENCIAL:
-        t_ini = high_resolution_clock::now();
+        t_ini = std::chrono::high_resolution_clock::now();
         test.busquedaSecuencial(v, key);
-        t_fin = high_resolution_clock::now();
+        t_fin = std::chrono::high_resolution_clock::now();
         break;
 
     case HASHCLOSED:
         testhash.add_element_closed(v);
-        t_ini = high_resolution_clock::now();
+        t_ini = std::chrono::high_resolution_clock::now();
         testhash.search_element_closed(key);
-        t_fin = high_resolution_clock::now();
+        t_fin = std::chrono::high_resolution_clock::now();
         break;
 
     case HASHOPENED:
         testhash.add_element_opened(v);
-        t_ini = high_resolution_clock::now();
+        t_ini = std::chrono::high_resolution_clock::now();
         testhash.search_element_opened(key);
-        t_fin = high_resolution_clock::now();
+        t_fin = std::chrono::high_resolution_clock::now();
         break;
     }
 
-    interval = duration_cast<duration<double>>(t_fin - t_ini) * 1000;
+    interval = std::chrono::duration_cast<std::chrono::duration<double>>(t_fin - t_ini) * 1000;
     segundos = interval.count()*1000000;
 
 
@@ -236,7 +236,7 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
 
 void TestBusqueda::casoMedio(int metodo){
     int tallaIni = 500,
-        tallaFin = 50000,
+        tallaFin = 15000,
         incTalla = 500;
     char opcion;
     double segundos = 0, tiempo;

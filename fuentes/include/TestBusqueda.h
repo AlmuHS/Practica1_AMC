@@ -11,7 +11,7 @@
 #include <chrono>
 #include <string>
 
-using namespace std;
+//using namespace std;
 
 static const int BINARIA = 0;
 static const int SECUENCIAL = 1;
@@ -28,7 +28,7 @@ public:
 	void comprobarMetodosBusqueda();
 	void comparar(int metodo1, int metodo2);
 	void casoMedio(int metodo);
-	double Buscar(std::vector<int> v, int metodo, int key);
+	double Buscar(std::vector<int> &v, int metodo, int key);
 	void generar_grafica(string metodo);
 	void generar_grafica(string fichero1, string fichero2);
 };

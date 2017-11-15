@@ -25,8 +25,6 @@ class HashSearch
 
         int closed_hash(int intempts, int key, int size);
 
-        void pop_element(vector<int> v);
-
         int search_element_opened(int key);
 
         int search_element_closed(int key);

@@ -10,7 +10,7 @@ AlgoritmosBusqueda::~AlgoritmosBusqueda(void)
 {
 }
 
-int AlgoritmosBusqueda::busquedaBinaria(std::vector<int> v, int key){
+int AlgoritmosBusqueda::busquedaBinaria(std::vector<int> &v, int key){
 	int inf = 0, sup = v.size(), mitad;
 
 	while(sup >= inf){
@@ -26,7 +26,7 @@ int AlgoritmosBusqueda::busquedaBinaria(std::vector<int> v, int key){
 	return -1;
 }
 
-int AlgoritmosBusqueda::busquedaSecuencial(std::vector<int> v, int key){
+int AlgoritmosBusqueda::busquedaSecuencial(std::vector<int> &v, int key){
 	int i = 0;
     int pos = 0;
 
