@@ -158,6 +158,7 @@ void Menu::menu_busquedas(){
                 <<"1: Busqueda Secuencial\n\n"
                 <<"2: Busqueda Hash Cerrada\n\n"
                 <<"3: Busqueda Hash Abierta\n\n"
+                <<"4. Busqueda por Interpolacion\n\n"
                 <<"---------\n\n"
                 <<"Elige opcion: ";
             cin>>opcion;
@@ -173,6 +174,7 @@ void Menu::menu_busquedas(){
                 <<"1. Secuencial\n\n"
                 <<"2: Busqueda Hash Cerrada\n\n"
                 <<"3: Busqueda Hash Abierta\n\n"
+                <<"4. Busqueda por Interpolacion\n\n"
                 <<"Elige metodo 1: ";
             cin>>opcion;
             cout<<"\nElige metodo 2: ";

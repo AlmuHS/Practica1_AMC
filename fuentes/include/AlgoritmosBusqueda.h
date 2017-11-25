@@ -44,6 +44,7 @@ public:
 	*/
 	int busquedaSecuencial(std::vector<int> &v, int key);
 
+    int busquedaInterpolacion(std::vector<int> &v, int key);
 
 };
 

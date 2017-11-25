@@ -56,4 +56,23 @@ int AlgoritmosBusqueda::busquedaSecuencial(std::vector<int> &v, int key){
     return pos;
 }
 
+int AlgoritmosBusqueda::busquedaInterpolacion(std::vector<int> &v, int key){
+	int p, primero, ultimo;
+
+	primero = 0;
+	ultimo = v.size() -1;
+
+	while (v[ultimo] >= key && v[primero] < key){
+		p = primero + ((ultimo - primero) * (key - v[primero]) / (v[ultimo] - v[primero]));
+
+		if (key > v[p]) primero = p + 1;
+		else{
+			if (key < v[p]) ultimo = p - 1;
+			else primero = p;
+		}
+	}
+
+	if (v[primero] == key) return primero;
+	else return -1;
+}
 

@@ -29,6 +29,7 @@ TestBusqueda::TestBusqueda(void)
     nombreAlgoritmo.push_back("Secuencial");
     nombreAlgoritmo.push_back("Hash Cerrada");
     nombreAlgoritmo.push_back("Hash Abierta");
+    nombreAlgoritmo.push_back("Interpolacion");
 }
 
 
@@ -51,7 +52,7 @@ double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
     switch(metodo)
     {
     case BINARIA:
-        ordenar.OrdenaHeapSort(v);
+        ordenar.OrdenaShell(v);
         QueryPerformanceCounter(&t_ini);
         test.busquedaBinaria(v, key);
         QueryPerformanceCounter(&t_fin);
@@ -76,6 +77,13 @@ double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
         testhash.search_element_opened(key);
         QueryPerformanceCounter(&t_fin);
         break;
+
+    case INTERPOLACION:
+		ordenar.OrdenaShell(v);
+		QueryPerformanceCounter(&t_ini);
+		test.busquedaInterpolacion(v, key);
+		QueryPerformanceCounter(&t_fin);
+		break;
 
     }
     segundos = counter.performancecounter_diff(&t_fin, &t_ini)*1000000;
@@ -99,7 +107,7 @@ double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
     switch(metodo)
     {
     case BINARIA:
-        ordenar.OrdenaHeapSort(v);
+        ordenar.OrdenaShell(v);
         t_ini = std::chrono::high_resolution_clock::now();
         test.busquedaBinaria(v, key);
         t_fin = std::chrono::high_resolution_clock::now();
@@ -124,6 +132,13 @@ double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
         testhash.search_element_opened(key);
         t_fin = std::chrono::high_resolution_clock::now();
         break;
+
+    case INTERPOLACION:
+		ordenar.OrdenaShell(v);
+		t_ini = std::chrono::high_resolution_clock::now();
+		test.busquedaInterpolacion(v, key);
+		t_fin = std::chrono::high_resolution_clock::now();
+		break;
     }
 
     interval = std::chrono::duration_cast<std::chrono::duration<double>>(t_fin - t_ini) * 1000;
@@ -162,7 +177,7 @@ void TestBusqueda::comprobarMetodosBusqueda()
         {
 
         case BINARIA:
-            ordena.OrdenaHeapSort(copia);
+            ordena.OrdenaShell(copia);
 
             cout<<"\nvector ordenado: "<<endl<<endl;
             vops.ShowVector(copia);
@@ -189,6 +204,13 @@ void TestBusqueda::comprobarMetodosBusqueda()
             testhash.show_opened_table();
             pos = testhash.search_element_opened(elem);
             break;
+
+        case INTERPOLACION:
+			ordena.OrdenaHeapSort(copia);
+			cout << "\nvector ordenado: " << endl << endl;
+			vops.ShowVector(copia);
+
+			pos = test.busquedaInterpolacion(copia, elem);
         }
         cout<<endl<<endl<<"Busqueda con metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
         cout<<"\nElemento a buscar: "<<elem<<endl;
@@ -310,7 +332,7 @@ void TestBusqueda::generar_grafica(string metodo)
         fout << "fit InsDir(x) \"" + metodo + "\" using 1:2 via a,b" << endl;
         fout << "plot \"" + metodo + "\" using 1:2, InsDir(x)" << endl;
     }
-    else if (metodo == "Binaria.dat")
+    else if (metodo == "Binaria.dat" || metodo == "Interpolacion.dat")
     {
         fout << "quick(x) = a*x*log(x)+b*x+c" << endl;
         fout << "fit quick(x) \"" + metodo + "\" using 1:2 via a, b, c" << endl;

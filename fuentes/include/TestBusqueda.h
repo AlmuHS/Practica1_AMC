@@ -33,6 +33,7 @@ static const int BINARIA = 0;
 static const int SECUENCIAL = 1;
 static const int HASHCLOSED = 2;
 static const int HASHOPENED = 3;
+static const int INTERPOLACION = 4;
 
 
 class TestBusqueda
