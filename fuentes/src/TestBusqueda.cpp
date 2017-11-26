@@ -11,13 +11,12 @@ Practica1_AMC is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
-
 You should have received a copy of the GNU General Public License
 along with Practica1_AMC.  If not, see <http://www.gnu.org/licenses/>.*/
 
 
 #include "TestBusqueda.h"
-#define NUMREPETICIONES 100
+#define NUMREPETICIONES 200
 #include "Mtime.h"
 #include <iostream>
 
@@ -248,8 +247,10 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
         while(contador < NUMREPETICIONES)
         {
             vops.GenRandomVector(v);
+            vector<int> copia(v);
+
             segundos1 += Buscar(v, metodo1, v[i/2]);
-            segundos2 += Buscar(v, metodo2, v[i/2]);
+            segundos2 += Buscar(copia, metodo2, copia[i/2]);
             contador++;
         }
 
@@ -275,7 +276,7 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
 
 void TestBusqueda::casoMedio(int metodo){
     int tallaIni = 500,
-        tallaFin = 15000,
+        tallaFin = 25000,
         incTalla = 500;
     char opcion;
     double segundos = 0, tiempo;
