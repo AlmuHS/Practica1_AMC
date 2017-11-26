@@ -16,11 +16,10 @@ along with Practica1_AMC.  If not, see <http://www.gnu.org/licenses/>.*/
 
 
 #include "TestBusqueda.h"
-#define NUMREPETICIONES 200
+#define NUMREPETICIONES 300
 #include "Mtime.h"
 #include <iostream>
 
-using namespace std;
 
 TestBusqueda::TestBusqueda(void)
 {
@@ -34,7 +33,7 @@ TestBusqueda::TestBusqueda(void)
 
 #if defined _WIN32 || defined _WIN64
 
-double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
+double TestBusqueda::Buscar(std::vector<int> &v, int metodo, int key)
 {
     AlgoritmosBusqueda test;
     double segundos = 0;
@@ -89,7 +88,7 @@ double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
 #elif defined __linux__ || defined __unix__
 
 
-double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
+double TestBusqueda::Buscar(std::vector<int> &v, int metodo, int key)
 {
     AlgoritmosBusqueda test;
     double segundos = 0;
@@ -154,27 +153,27 @@ void TestBusqueda::comprobarMetodosBusqueda()
     HashSearch testhash;
     vector_ops vops;
 
-    std::cout<<endl<<endl<<"Introduce la talla: ";
+    std::cout<<"\n\nIntroduce la talla: ";
     std::cin>>talla;
 
-    vector<int> v(talla);
+    std::vector<int> v(talla);
     vops.GenRandomVector(v);
 
     for (unsigned int metodo = 0; metodo < nombreAlgoritmo.size(); metodo++)
     {
         int elem = v[talla-1];
 
-        cout <<endl<<endl<< "vector inicial para el metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
+        std::cout <<"\n\nvector inicial para el metodo "<<nombreAlgoritmo[metodo]<< ":\n\n";
         vops.ShowVector(v); //Mostrar por pantalla
 
-        vector<int> copia = v;
+        std::vector<int> copia = v;
         switch(metodo)
         {
 
         case BINARIA:
             ordena.OrdenaShell(copia);
 
-            cout<<"\nvector ordenado: "<<endl<<endl;
+        std::cout<<"\nvector ordenado: \n\n";
             vops.ShowVector(copia);
 
             pos = test.busquedaBinaria(copia, elem);
@@ -187,7 +186,7 @@ void TestBusqueda::comprobarMetodosBusqueda()
         case HASHCLOSED:
             testhash.add_element_closed(v);
 
-            cout<<endl<<endl<<"Tabla Hash Cerrada generada: "<<endl<<endl;
+           std::cout<<std::endl<<std::endl<<"Tabla Hash Cerrada generada: \n\n";
             testhash.show_closed_table();
             pos = testhash.search_element_closed(elem);
             break;
@@ -195,22 +194,22 @@ void TestBusqueda::comprobarMetodosBusqueda()
         case HASHOPENED:
             testhash.add_element_opened(v);
 
-            cout<<endl<<endl<<"Tabla Hash Abierta generada: "<<endl<<endl;
+           std::cout<<std::endl<<std::endl<<"Tabla Hash Abierta generada: \n\n";
             testhash.show_opened_table();
             pos = testhash.search_element_opened(elem);
             break;
 
         case INTERPOLACION:
 			ordena.OrdenaHeapSort(copia);
-			cout << "\nvector ordenado: " << endl << endl;
+			std::cout << "\nvector ordenado: " << std::endl << std::endl;
 			vops.ShowVector(copia);
 
 			pos = test.busquedaInterpolacion(copia, elem);
         }
-        cout<<endl<<endl<<"Busqueda con metodo "<<nombreAlgoritmo[metodo]<< ":"<<endl<<endl;
-        cout<<"\nElemento a buscar: "<<elem<<endl;
-        cout<<"\nElemento encontrado en posicion "<<pos;
-        cout<<endl;
+       std::cout<<std::endl<<std::endl<<"Busqueda con metodo "<<nombreAlgoritmo[metodo]<< ":"<<std::endl<<std::endl;
+       std::cout<<"\nElemento a buscar: "<<elem<<std::endl;
+       std::cout<<"\nElemento encontrado en posicion "<<pos;
+       std::cout<<std::endl;
     }
 }
 
@@ -222,20 +221,20 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
         incTalla = 500;
     char opcion;
     double segundos1 = 0, segundos2 = 0, tiempo1, tiempo2;
-    string met1, met2;
+    std::string met1, met2;
 
     met1 = nombreAlgoritmo[metodo1];
     met2 = nombreAlgoritmo[metodo2];
 
-    cout<<"Talla\t\t"<<met1<<"\t\t"<<met2<<endl<<endl;
+   std::cout<<"Talla\t\t"<<met1<<"\t\t"<<met2<<std::endl<<std::endl;
     met1+=".dat";
     met2+=".dat";
-    ofstream fichero1(met1.c_str()), fichero2(met2.c_str());
+    std::ofstream fichero1(met1.c_str()), fichero2(met2.c_str());
     vector_ops vops;
 
     for(int i = tallaIni; i <= tallaFin; i += incTalla)
     {
-        vector<int> v(i);
+        std::vector<int> v(i);
         segundos1 = 0;
         segundos2 = 0;
         int contador = 0;
@@ -251,36 +250,36 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
         tiempo1 = segundos1 / NUMREPETICIONES;
         tiempo2 = segundos2 / NUMREPETICIONES;
 
-        cout<<i<<"\t\t"<<tiempo1<<"\t\t"<<tiempo2<<endl;
+       std::cout<<i<<"\t\t"<<tiempo1<<"\t\t"<<tiempo2<<std::endl;
 
-        fichero1<<i<<"\t\t"<<tiempo1<<endl;
-        fichero2<<i<<"\t\t"<<tiempo2<<endl;
+        fichero1<<i<<"\t\t"<<tiempo1<<std::endl;
+        fichero2<<i<<"\t\t"<<tiempo2<<std::endl;
     }//fin for
 
-    cout<<"\n\nGrabar los datos en ficheros? (s/n): ";
-    cin>>opcion;
+    std::cout<<"\n\nGrabar los datos en ficheros? (s/n): ";
+    std::cin>>opcion;
     if(opcion == 's')
     {
-        cout<<"\n\nDatos grabados en los ficheros "<<met1<<" y  "<<met2
+       std::cout<<"\n\nDatos grabados en los ficheros "<<met1<<" y  "<<met2
             <<"\n\nGenerar grafica de resultados? (s/n): ";
-        cin>>opcion;
+       std::cin>>opcion;
         if(opcion == 's') generar_grafica(met1, met2);
     }
 }
 
 void TestBusqueda::casoMedio(int metodo){
     int tallaIni = 500,
-        tallaFin = 25000,
+        tallaFin = 50000,
         incTalla = 500;
     char opcion;
     double segundos = 0, tiempo;
-    string nombre_fichero = nombreAlgoritmo[metodo] + ".dat";
-    ofstream fichero(nombre_fichero.c_str());
+    std::string nombre_fichero = nombreAlgoritmo[metodo] + ".dat";
+    std::ofstream fichero(nombre_fichero.c_str());
     vector_ops vops;
 
-	cout<<"Talla\t\t"<<"Tiempo\n\n";
+	std::cout<<"Talla\t\t"<<"Tiempo\n\n";
 	for(int i = tallaIni; i < tallaFin; i += incTalla){
-		vector<int> v(i);
+		std::vector<int> v(i);
 		int contador = 0;
 		segundos = 0;
 
@@ -292,59 +291,59 @@ void TestBusqueda::casoMedio(int metodo){
 		}
 		tiempo = segundos / NUMREPETICIONES;
 
-		cout<<i<<"\t\t"<<tiempo<<endl;
-		fichero<<i<<"\t\t"<<tiempo<<endl;
+		std::cout<<i<<"\t\t"<<tiempo<<std::endl;
+		fichero<<i<<"\t\t"<<tiempo<<std::endl;
 	}//fin for
 
-	cout<<"\n\nGrabar los datos en el fichero "<<nombre_fichero<<" ? (s/n): ";
-	cin>>opcion;
+	std::cout<<"\n\nGrabar los datos en el fichero "<<nombre_fichero<<" ? (s/n): ";
+	std::cin>>opcion;
 
 	if(opcion == 's'){
-        cout<<"\n\nDatos grabados en el fichero "<<nombre_fichero
+       std::cout<<"\n\nDatos grabados en el fichero "<<nombre_fichero
             <<"\n\nGenerar grafica de resultados? (s/n): ";
-        cin>>opcion;
+        std::cin>>opcion;
         if(opcion == 's') generar_grafica(nombre_fichero);
 	}
 }
 
 
-void TestBusqueda::generar_grafica(string metodo)
+void TestBusqueda::generar_grafica(std::string metodo)
 {
-    string nom = "CmdMedio.plt";
+    std::string nom = "CmdMedio.plt";
 
-    ofstream fout((char*)nom.c_str());
+    std::ofstream fout((char*)nom.c_str());
 
-    fout << "set title \" Busqueda " << metodo << "\"" << endl;
-    fout << "set key top left vertical inside" << endl;
-    fout << "set grid" << endl;
-    fout << "set xlabel \"Talla (n)\"" << endl;
-    fout << "set ylabel \"Tiempo (ms)\"" << endl;
-    fout << "plot \"" << metodo << "\" using 1:2 with lines" << endl;
+    fout << "set title \" Busqueda " << metodo << "\"" << std::endl;
+    fout << "set key top left vertical inside" << std::endl;
+    fout << "set grid" << std::endl;
+    fout << "set xlabel \"Talla (n)\"" << std::endl;
+    fout << "set ylabel \"Tiempo (ms)\"" << std::endl;
+    fout << "plot \"" << metodo << "\" using 1:2 with lines" << std::endl;
 
     if(metodo=="Secuencial.dat")
     {
-        fout << "InsDir(x) = a + b*x" << endl;
-        fout << "fit InsDir(x) \"" + metodo + "\" using 1:2 via a,b" << endl;
-        fout << "plot \"" + metodo + "\" using 1:2, InsDir(x)" << endl;
+        fout << "InsDir(x) = a + b*x" << std::endl;
+        fout << "fit InsDir(x) \"" + metodo + "\" using 1:2 via a,b" << std::endl;
+        fout << "plot \"" + metodo + "\" using 1:2, InsDir(x)" << std::endl;
     }
     else if (metodo == "Binaria.dat" || metodo == "Interpolacion.dat")
     {
-        fout << "quick(x) = a*x*log(x)+b*x+c" << endl;
-        fout << "fit quick(x) \"" + metodo + "\" using 1:2 via a, b, c" << endl;
-        fout << "plot \"" + metodo + "\" using 1:2, quick(x)" << endl;
+        fout << "quick(x) = a*x*log(x)+b*x+c" << std::endl;
+        fout << "fit quick(x) \"" + metodo + "\" using 1:2 via a, b, c" << std::endl;
+        fout << "plot \"" + metodo + "\" using 1:2, quick(x)" << std::endl;
     }
     else if(metodo == "Hash Cerrada.dat" || metodo == "Hash Abierta.dat")
     {
-        fout << "quick(x) = a + b + c" << endl;
-        fout << "fit quick(x) \"" + metodo + "\" using 1:2 via a,b,c" << endl;
-        fout << "plot \"" + metodo + "\" using 1:2, quick(x)" << endl;
+        fout << "quick(x) = a + b + c" << std::endl;
+        fout << "fit quick(x) \"" + metodo + "\" using 1:2 via a,b,c" << std::endl;
+        fout << "plot \"" + metodo + "\" using 1:2, quick(x)" << std::endl;
     }
 
 
-    fout << "set terminal png" << endl;
-    fout << "set output \"" << metodo << ".png\"" << endl;
-    fout << "replot" << endl;
-    fout << "pause 10 \"Pulse Enter para continuar...\"" << endl;
+    fout << "set terminal png" << std::endl;
+    fout << "set output \"" << metodo << ".png\"" << std::endl;
+    fout << "replot" << std::endl;
+    fout << "pause 10 \"Pulse Enter para continuar...\"" << std::endl;
 
     fout.close();
 
@@ -355,22 +354,22 @@ void TestBusqueda::generar_grafica(string metodo)
     #endif
 }
 
-void TestBusqueda::generar_grafica(string fichero1, string fichero2)
+void TestBusqueda::generar_grafica(std::string fichero1, std::string fichero2)
 {
-    ofstream graf("CmdCMP.plt");
+    std::ofstream graf("CmdCMP.plt");
 
     graf << "set title \""<<"Comparacion tiempos entre " << fichero1 <<" y "<< fichero2 << "\"" << "\n";
     graf << "set key top left vertical inside\n";
     graf << "set grid\n";
     graf << "set xlabel \"Talla (n)\"\n";
     graf << "set ylabel \"Tiempo (ms)\"\n";
-    graf << "plot \"" << fichero1 << "\" using 1:2 with lines, \"" << fichero2 << "\" using 1:2 with lines" << endl;
+    graf << "plot \"" << fichero1 << "\" using 1:2 with lines, \"" << fichero2 << "\" using 1:2 with lines" << std::endl;
 
 
-    graf << "set terminal png" << endl;
-    graf << "set output \"" << fichero1 << "-" <<fichero2 << ".png\"" << endl;
-    graf << "replot" << endl;
-    graf << "pause 10 \"Pulse Enter para continuar...\"" << endl;
+    graf << "set terminal png" << std::endl;
+    graf << "set output \"" << fichero1 << "-" <<fichero2 << ".png\"" << std::endl;
+    graf << "replot" << std::endl;
+    graf << "pause 10 \"Pulse Enter para continuar...\"" << std::endl;
     graf.close();
 
     #if defined __linux__ || defined __unix__
