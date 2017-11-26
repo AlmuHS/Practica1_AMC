@@ -48,7 +48,6 @@ TestOrdenacion::TestOrdenacion()
     nombreAlgoritmo.push_back("QuickSort");
     nombreAlgoritmo.push_back("MergeSort");
 }
-TestOrdenacion::~TestOrdenacion() {}
 /*
  * Ordena un array de enteros según el método indicado
  * param v: el array de enteros a ordenar

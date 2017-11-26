@@ -21,10 +21,6 @@ along with Practica1_AMC.  If not, see <http://www.gnu.org/licenses/>.*/
 #include <random>
 #include <iostream>
 
-vector_ops::vector_ops()
-{
-    //ctor
-}
 
 void vector_ops::GenRandomVector(std::vector<int> &v){
 

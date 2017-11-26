@@ -32,10 +32,6 @@ TestBusqueda::TestBusqueda(void)
 }
 
 
-TestBusqueda::~TestBusqueda(void)
-{
-}
-
 #if defined _WIN32 || defined _WIN64
 
 double TestBusqueda::Buscar(vector<int> &v, int metodo, int key)
@@ -247,10 +243,8 @@ void TestBusqueda::comparar(int metodo1 = 0, int metodo2 = 1)
         while(contador < NUMREPETICIONES)
         {
             vops.GenRandomVector(v);
-            vector<int> copia(v);
-
             segundos1 += Buscar(v, metodo1, v[i/2]);
-            segundos2 += Buscar(copia, metodo2, copia[i/2]);
+            segundos2 += Buscar(v, metodo2, v[i/2]);
             contador++;
         }
 

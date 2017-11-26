@@ -26,22 +26,18 @@ along with Practica1_AMC.  If not, see <http://www.gnu.org/licenses/>.*/
 
 #include "vector_ops.h"
 
-using namespace std;
-
 
 class HashSearch
 {
-    vector<list<int> > hash_opened;
-    vector<int> hash_closed;
+    std::vector<std::list<int> > hash_opened;
+    std::vector<int> hash_closed;
 
     public:
         HashSearch();
 
-        void add_element_opened(vector<int> &v);
+        void add_element_opened(std::vector<int> &v);
 
-        void add_element_closed(vector<int> &v);
-
-        int closed_hash(int intempts, int key, int size);
+        void add_element_closed(std::vector<int> &v);
 
         int search_element_opened(int key);
 

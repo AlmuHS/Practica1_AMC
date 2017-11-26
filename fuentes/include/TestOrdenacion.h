@@ -41,8 +41,6 @@ along with Practica1_AMC.  If not, see <http://www.gnu.org/licenses/>.*/
 #include "MergeSort.h"
 #include "vector_ops.h"
 
-using namespace std;
-
 /* Constantes para indicar el metodo de ordenacion*/
 static const int BURBUJA = 0;
 static const int INSERCION = 1;
@@ -56,11 +54,10 @@ static const int MERGESORT = 6;
 static const int NUMREPETICIONES=10;
 
 class TestOrdenacion {
-	vector<string> nombreAlgoritmo;
+	std::vector<std::string> nombreAlgoritmo;
 public:
 
 	TestOrdenacion();
-	~TestOrdenacion();
 /*
  * Ordena un array de enteros según el método indicado
  * param v: el array de enteros a ordenar
@@ -68,7 +65,7 @@ public:
  * param metodo: Metodo de ordenacion a utilizar
  * return Tiempo empleado en la ordenación (en milisegundos)
  */
-	static double ordenarArrayDeInt(vector<int> &v,int metodo);
+	static double ordenarArrayDeInt(std::vector<int> &v,int metodo);
 
 /*
  * Comprueba que los metodos de ordenación funcionan correctamente
@@ -90,8 +87,8 @@ public:
  */
 	void casoMedio(int metodo);
 
-	void generar_grafica(string metodo);
-	void generar_grafica(string fichero1, string fichero2);
+	void generar_grafica(std::string metodo);
+	void generar_grafica(std::string fichero1, std::string fichero2);
 
 };
 #endif

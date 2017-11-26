@@ -46,13 +46,13 @@ void Menu::clear(){
 
 void Menu::menu_principal(){
     do{
-        cout<<"**** MENU PRINCIPAL ****\n\n"
+        std::cout<<"**** MENU PRINCIPAL ****\n\n"
             <<"1.- MENU ORDENACION\n\n"
             <<"2.- MENU BUSQUEDA\n\n"
             <<"0.- Salir\n\n"
             <<"----------\n\n"
             <<"Elige opcion: ";
-        cin>>opcion;
+        std::cin>>opcion;
 
         clear();
 
@@ -74,14 +74,14 @@ void Menu::menu_principal(){
 
 void Menu::menu_ordenacion(){
     TestOrdenacion ordena;
-    cout<<"*** MENU ORDENACION ***\n\n"
+    std::cout<<"*** MENU ORDENACION ***\n\n"
         <<"1.- Probar los metodos de ordenacion\n\n"
         <<"2.- Obtener el caso medio de un metodo de ordenacion\n\n"
         <<"3.- Comparar dos metodos\n\n"
         <<"0.- Volver al menu principal\n\n"
         <<"---------\n\n"
         <<"Elige opcion: ";
-    cin>>opcion;
+    std::cin>>opcion;
 
     clear();
 
@@ -92,7 +92,7 @@ void Menu::menu_ordenacion(){
         break;
 
         case 2:
-            cout<<"*** Metodo a estudiar para el caso medio ***\n\n"
+            std::cout<<"*** Metodo a estudiar para el caso medio ***\n\n"
                 <<"0: Burbuja\n\n"
                 <<"1: Insercion\n\n"
                 <<"2: Seleccion\n\n"
@@ -102,12 +102,12 @@ void Menu::menu_ordenacion(){
                 <<"6: MergeSort\n\n"
                 <<"---------\n\n"
                 <<"Elige opcion: ";
-            cin>>opcion;
+            std::cin>>opcion;
             ordena.casoMedio(opcion);
         break;
 
         case 3:
-            cout<<"*** COMPARACION DE DOS METODOS DE ORDENACION ***\n\n"
+            std::cout<<"*** COMPARACION DE DOS METODOS DE ORDENACION ***\n\n"
                 <<"Selecciona los dos metodos a comparar\n\n"
                 <<"0. Burbuja\n\n"
                 <<"1. Insercion\n\n"
@@ -117,9 +117,9 @@ void Menu::menu_ordenacion(){
                 <<"5: QuickSort\n\n"
                 <<"6: MergeSort\n\n"
                 <<"Elige metodo 1: ";
-            cin>>opcion;
-            cout<<"\nElige metodo 2: ";
-            cin>>opcion2;
+            std::cin>>opcion;
+            std::cout<<"\nElige metodo 2: ";
+            std::cin>>opcion2;
 
             clear();
             ordena.comparar(opcion, opcion2);
@@ -134,14 +134,14 @@ void Menu::menu_ordenacion(){
 
 void Menu::menu_busquedas(){
     TestBusqueda buscar;
-    cout<<"**** MENU BUSQUEDA ****\n\n"
+    std::cout<<"**** MENU BUSQUEDA ****\n\n"
         <<"1.- Probar los metodos de busqueda\n\n"
         <<"2.- Obtener el caso medio de un metodo de busqueda\n\n"
         <<"3.- Comparar los metodos\n\n"
         <<"0.- Volver al menu principal\n\n"
         <<"---------\n\n"
         <<"Elige opcion: ";
-    cin>>opcion;
+    std::cin>>opcion;
 
     clear();
 
@@ -153,7 +153,7 @@ void Menu::menu_busquedas(){
         break;
 
         case 2:
-            cout<<"*** Metodo a estudiar para el caso medio ***\n\n"
+            std::cout<<"*** Metodo a estudiar para el caso medio ***\n\n"
                 <<"0: Busqueda Binaria\n\n"
                 <<"1: Busqueda Secuencial\n\n"
                 <<"2: Busqueda Hash Cerrada\n\n"
@@ -161,14 +161,14 @@ void Menu::menu_busquedas(){
                 <<"4. Busqueda por Interpolacion\n\n"
                 <<"---------\n\n"
                 <<"Elige opcion: ";
-            cin>>opcion;
+            std::cin>>opcion;
 
             clear();
             buscar.casoMedio(opcion);
         break;
 
         case 3:
-            cout<<"*** COMPARACION DE DOS METODOS DE BUSQUEDA ***\n\n"
+            std::cout<<"*** COMPARACION DE DOS METODOS DE BUSQUEDA ***\n\n"
                 <<"Selecciona los dos metodos a comparar\n\n"
                 <<"0. Binaria\n\n"
                 <<"1. Secuencial\n\n"
@@ -176,9 +176,9 @@ void Menu::menu_busquedas(){
                 <<"3: Busqueda Hash Abierta\n\n"
                 <<"4. Busqueda por Interpolacion\n\n"
                 <<"Elige metodo 1: ";
-            cin>>opcion;
-            cout<<"\nElige metodo 2: ";
-            cin>>opcion2;
+            std::cin>>opcion;
+            std::cout<<"\nElige metodo 2: ";
+            std::cin>>opcion2;
 
             clear();
             buscar.comparar(opcion, opcion2);

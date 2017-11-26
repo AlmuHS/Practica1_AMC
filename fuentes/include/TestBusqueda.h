@@ -38,10 +38,9 @@ static const int INTERPOLACION = 4;
 
 class TestBusqueda
 {
-	std::vector<string> nombreAlgoritmo;
+	std::vector<std::string> nombreAlgoritmo;
 public:
 	TestBusqueda(void);
-	~TestBusqueda(void);
 	void comprobarMetodosBusqueda();
 	void comparar(int metodo1, int metodo2);
 	void casoMedio(int metodo);

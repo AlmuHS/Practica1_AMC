@@ -19,8 +19,6 @@ along with Practica1_AMC.  If not, see <http://www.gnu.org/licenses/>.*/
 #include "HashSearch.h"
 #include <cmath>
 
-using namespace std;
-
 constexpr float inv_aurea = 2/(1 + sqrt(5));
 
 HashSearch::HashSearch()
@@ -36,10 +34,10 @@ HashSearch::HashSearch()
 * asociada a dicha posicion
 */
 
-void HashSearch::add_element_opened(vector<int> &v)
+void HashSearch::add_element_opened(std::vector<int> &v)
 {
     //Crea un nuevo vector de listas, del mismo tamaño que el vector inicial
-    hash_opened.assign(v.size(), list<int>());
+    hash_opened.assign(v.size(), std::list<int>());
     int pos = 0;
     int tam = v.size();
 
@@ -69,7 +67,7 @@ void HashSearch::add_element_opened(vector<int> &v)
 * se considerará que la tabla esta llena, y que no es posible insertar el valor
 */
 
-void HashSearch::add_element_closed(vector<int> &v)
+void HashSearch::add_element_closed(std::vector<int> &v)
 {
     int pos = 0;
 
@@ -218,12 +216,12 @@ void HashSearch::show_opened_table(){
 
     for(int i = 0; i < hash_opened.size(); i++){
 
-            cout<<"Posicion "<<i<<": ";
+            std::cout<<"Posicion "<<i<<": ";
             for(std::list<int>::const_iterator it = hash_opened[i].begin(); it != hash_opened[i].end(); it++){
                 std::cout<<*it<<"\t";
             }
 
-            cout<<endl;
+            std::cout<<std::endl;
     }
 }
 

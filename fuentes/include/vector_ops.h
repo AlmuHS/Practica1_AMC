@@ -24,7 +24,6 @@ along with Practica1_AMC.  If not, see <http://www.gnu.org/licenses/>.*/
 class vector_ops
 {
     public:
-        vector_ops();
 
         void GenRandomVector(std::vector<int> &v);
         void ShowVector(std::vector<int> &v);
